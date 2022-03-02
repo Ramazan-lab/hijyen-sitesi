@@ -466,3 +466,28 @@ footer{
     background: linear-gradient(to right,wheat,rgb(121, 202, 223),#002249);
     border-radius: 60px;
   }
+
+  .sectionAdminLogin{
+    background-image: url(./img/pexels-tranmautritam-285814.jpg);
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    object-fit: contain;
+    background-repeat: no-repeat;
+    
+  }
+
+  .sectionAdminLogin h1{
+    font-style: italic;
+    color: white;
+    text-decoration:underline;
+    
+  }
+  .sectionAdminLogin button{
+    border-radius: 7px;
+    border-style: none;
+  }
+  .sectionAdminLogin input{
+    border-radius: 7px;
+    border-style: none;
+  }
