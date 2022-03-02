@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webdevproof</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" type="text/css" href="./slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="./slick/slick-theme.css" />
+    
+
+<style type="text/css">
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .slider {
+    width: 80%;
+    margin: 100px auto;
+  }
+
+  .slick-slide {
+    margin: 0px 20px;
+  }
+
+  .slick-slide img {
+    width: 100%;
+  }
+
+  .slick-prev:before,
+  .slick-next:before {
+    color: black;
+  }
+
+  .slick-slide {
+    transition: all ease-in-out 0.3s;
+    opacity: 0.2;
+  }
+
+  .slick-active {
+    opacity: 0.5;
+  }
+
+  .slick-current {
+    opacity: 1;
+  }
+</style>
+		
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light  ">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="./index.html"> <img class="img-fluid" src="./img/Hijyen-Logo.png" >  </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarNavDropdown">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="hijyen-belgesi-page.html">Hijyen Belgesi</a>
+          </li>
+         
+         
+          <li class="nav-item">
+            <a class="nav-link active" href="online-page.html">Online Başvuru</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="sorular-page.html">Sıkça Sorulan Sorular</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="sınavlar-page.html">Sınavlar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="blog-page.html">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="iletişim-page.html">Iletişim</a>
+          </li>
+          <li class="nav-item">
+            <a  style="color: rgb(20, 235, 250);" class="nav-link active btn--show-modal" href="">Giriş yap</a>
+          </li>
+          <li class="nav-item">
+            <a style="color: rgb(20, 235, 250);" class="nav-link active kayıt--show-modal" href="">kayıt Ol</a>
+          </li>
+         
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+    <div class="modal-custom hidden">
+      <button class="btn--close-modal">&times;</button>
+      </h2>
+      <form class="modal__form">
+        <label style="color: white; font-weight: 400;">E-Posta</label>
+        <input type="email" />
+        <label style="color: white; font-weight: 400;">Şifre</label>
+        <input type="text" />
+        <button class="btn-modal">Giriş yap <i class="bi bi-arrow-bar-right"></i></button>
+      </form>
+    </div>
+    <div class="overlay hidden"></div>
+
+
+    <div class="modal--custom-kayıt hidden">
+      <button class="btn--close-modal">&times;</button>
+      </h2>
+      <form action="/users/create" method="POST" class="modal__form">
+        <label style="color: white; font-weight: 400;">Ad Soyad</label>
+        <input name="userName" type="text" required />
+        <label style="color: white; font-weight: 400;">E-Posta</label>
+        <input name="userMail" type="email" required/>
+        <label style="color: white; font-weight: 400;">Telefon numarası</label>
+        <input name="userNumber" type="number" placeholder="(5xx) xxx xx xx" required/>
+        <label style="color: white; font-weight: 400;">Şifre</label>
+        <input name="userPassword" type="text" required/>
+        <button type="submit" class="btn-modal">Kayıt ol <i class="bi bi-arrow-bar-right"></i></button>
+      </form>
+    </div>
+    <div class="overlay hidden"></div>
+
+<div class=" container-fluid section-banner">
+<div class="row section-banner-row">
+
+  <div style="padding-left: 15vw; padding-top: 7vw;" class="col-md-7">
+  <h5 style="font-size: 1.5rem; font-weight: 380; color: rgb(120, 182, 207);">Tüm Belgelerimiz M.E.B ve Üniversite Onaylıdır.</h5>
+  <h1 style="padding-bottom: 20px; color: #002249; font-weight: 700; font-size: 3rem;">Hijyene Dair Herşey...</h1>
+  <button style=" width: 70%; border-style: none; background-color:rgb(72, 133, 190); color: white !important; padding-top: 15px; padding-bottom: 15px; font-size: 1.2rem;"><i class="bi bi-headset"></i> Hızlı Başvuru İçin Hemen Tıklayın !</button>
+  </div>
+  <div class="col-md-5"><img style="width: 70%; height: 100%; " src="./img/man-banner.png" alt=""></div>
+</div>
+</div>
+
+
+</div>
+
+<div class="container-fluid card-section">
+  <div class="row text-center">
+    
+
+    <div class="col-sm-3 p-5">
+      <div class="card">
+        <div class="card-icon"> 
+
+          <i class="bi bi-people-fill"></i>
+
+        </div>
+        <div class="card-text">
+          <h1 style="font-size: 2rem; color: grey;">uzman eğitim kadrosu</h1>
+          <h1 style="font-size: 1rem; color: grey;" class="pt-3">Kadromuzdaki her bir eğitmen alanlarında uzmandır.</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3 p-5">
+      <div class="card">
+        <div class="card-icon">
+          <i class="bi bi-emoji-smile"></i>
+        </div>
+        <div class="card-text">
+          <h1 style="font-size: 2rem; color: grey;">Güler yüzlü hizmet</h1>
+          <h1 style="font-size: 1rem; color: grey;" class="pt-3">Kurumumuza adım attığınız anda sizi güler yüzlü çalışanlarımız karşılar.</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3 p-5">
+      <div class="card">
+        <div class="card-icon">
+          <i class="bi bi-hand-thumbs-up-fill"></i>
+        </div>
+        <div class="card-text">
+          <h1 style="font-size: 2rem; color: grey;">100% Müşteri memnuniyeti</h1>
+          <h1 style="font-size: 1rem; color: grey;" class="pt-3">Amatör ruh, profesyonel hizmet yaklaşımı sonucunda mutlu müşterilere sahibiz.</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3 p-5">
+      <div class="card">
+        <div class="card-icon">
+          <i class="bi bi-check-square-fill"></i>
+        </div>
+        <div class="card-text">
+          <h1 style="font-size: 2rem; color: grey;">Kurum odaklılık</h1>
+          <h1 style="font-size: 1rem; color: grey;" class="pt-3">Kurumları tanıyor, yaşadıkları sorunları biliyoruz. Kurumsal çözümler üretiyoruz.</h1>
+        </div>
+      </div>
+    </div>
+
+  
+</div>
+</div>
+
+<div class="container-fluid">
+  <div style="background-image:url(./img/100firma-banner.jpg);" class="row">
+
+    <div style="padding: 7vw;" class="col-md-6"><img src="./img/100Firma.jpg" alt=""></div>
+    <div style="padding-top: 5vw;" class="col-md-6">
+    <h1 style="font-weight: 700;">Neden Hijyen Belgesi Almalısınız?</h1>
+    <p style="font-weight: 700; color:black">Hijyen belgesinin zorunlu olduğu sektör ve çalışanlar yasal sınırlar çerçevesinde güvence altına alınmaktadır. Belgeye sahip olmayan kişi, kurum ve işletmeler ilgili makamların tespit etmesi üzerine 250 TL-1000 TL para cezasına çarptırılmaktadır. 
+    <br><br>  </p>
+
+    <p  style="font-weight: 700; color: black;"><u> Gıda işletme sahipleri,Perakende gıda satışı yapan yerler,Su Üretimi ile İlgilenen İşletme ve Firmalar,Toptan Satış Yapan Yerler,Konaklama Yerleri,Gıda Taşımacılığı ve Servisi Yapan İşletmeler,Kuaför ve Berberler,Diğer Yurtlar,Öğrenci Yurtları,Misafirhane işletmeleri,Hamam, Havuz, Sauna,Otel, Motel ve Pansiyonlar,Temizlik İşletmeleri </u>
+    <br><br> Hijyen belgesini almakla hükümlü olan işveren ve çalışanlar hakkında detaylı bilgi almak için hemen aşağıdaki linki tıklayın.Sizde hemen Hijyen Akademisi ailesine katılın…
+    </p>
+<div class="row">
+  <div class="col-4">
+    <h1 style="font-size: 4rem; font-weight: 900; color: rgb(11, 124, 216);">110+ </h1> <h1>Firma...</h1></div>
+    <div class="col-8"><button style="padding-top: 10px; padding-bottom: 10px;  width: 100%; border-color: white; background-color: #002249; color: white;"><i class="bi bi-telephone-forward"></i> Detaylı bilgi için arayın !</button></div>
+
+  </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<div class="container e-Devlet-section">
+  <div class="row"> 
+    <img src="./img/edevlet.jpg" alt="">
+  </div>
+</div>
+
+
+<div class="container-fluid section-eğitimler">
+  <div style="padding-top: 50px; padding: 0 10vw; justify-content: space-between;" class="row text-center">
+<h1 style="color: #002249; font-size: 3rem; font-weight: 800;">HİJYEN EĞİTİMLERİMİZ</h1>
+<p style="color: aqua;">Tüm Belgelerimiz M.E.B Onaylıdır. Tüm Kurum ve İşletmeler Başvuru Yapılabilir.</p>
+    <div class="col-md-4 eğt-col"><img src="./img/eğitimler1.jpg" alt="">
+    
+<h4>Gıda ve Su Sektöründe Çalışanlar İçin HİJYEN EĞİTİMİ</h4>
+    </div>
+    <div class="col-md-4 eğt-col"><img src="./img/eğitimler2.jpg" alt="">
+    <h4>Güzellik ve Saç Bakım Sektörü İçin HİJYEN EĞİTİMİ</h4>
+    </div>
+    <div class="col-md-4 eğt-col"><img src="./img/eğitimler3.jpg" alt="">
+    <h4>Sterilizasyon ve Dezenfeksiyon Eğitimi</h4>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid section-we">
+  <div class="row">
+    <div style="padding-left: 7vw;" class="col-md-6">
+    <h2 style="color: white;">Biz Kimiz?</h2>
+    <h1 style="color: white;">NEDEN HİJYENAKADEMİ</h1>
+   <h4 style="color:#002249;">Kalite - Tecrübe ve Yeni Nesil Teknoloji</h4>
+    <p style="color: black; font-size: 1.2rem; font-weight: 400;">Hijyen Akademi olarak, bünyemizde kayıtlı kursiyerlerimize önce eğitim danışmanlığı, ardından belgelendirme hizmeti sunarak memnuniyeti her daim en üst safhada tutuyoruz.<br><br>
+
+      Hem bireysel olarak hem de firma bazında tüm konularda danışmanlık yaparak herkese başarılı gelecek oluşturmayı hedefliyoruz.<br><br>
+      
+      Gelişmekte ve değişmekte olan eğitim faaliyetlerini en güncel ve en güvenli şekilde bünyemizde bulundurarak sadece Türkiye içerisinde değil birçok ülkeye hizmet sunuyoruz.<br><br>
+      
+      “Eğitimli birey her sektörde öncüdür.” diyerek, tüm kursiyerlerimizin başarılı birer çalışma arkadaşı olmasını amaçlıyoruz.<br><br>
+      
+      Birbirinden farklı eğitim programlarımızla her kesimden insana hitap ederek, sertifikalandırma işlemlerini tamamlıyoruz.</p>
+    </div>
+    <div class="col-md-6"><img style="width: 70%; padding-top: 120px;" src="./img/we.jpg" alt=""></div>
+  </div>
+</div>
+
+
+
+<div class="container-fluid preference-section" style="text-align: center;">
+  <div class="row preference-section-title">
+    <h1 style="padding-top: 20px;">Neden bizi tercih etmelisiniz</h1>
+    <h5 style="color: grey;">işte bizi tercih etmeniz için bir kaç sebep..</h5>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card-p">
+        <div class="card-p-icon"><i class="bi bi-bullseye"></i></div>
+        <div class="card-p-text">KALİTELİ HİZMET
+          </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card-p">
+        <div class="card-p-icon"><i class="bi bi-hand-thumbs-up"></i></div>
+        <div class="card-p-text">MÜŞTERİ MEMNUNİYETİ</div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card-p">
+        <div class="card-p-icon"><i class="bi bi-hand-index-thumb"></i></div>
+        <div class="card-p-text">ÇÖZÜM ORTAKLIĞI</div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card-p">
+        <div class="card-p-icon"><i class="bi bi-emoji-smile"></i></div>
+        <div class="card-p-text">GÜLERYÜZLÜ KADRO</div>
+      </div>
+    </div>
+   
+  </div>
+  <div class="row pt-5 pb-5">
+    <div class="col-md-3">
+      <div class="card-p">
+        <div class="card-p-icon"><i class="bi bi-people"></i></div>
+        <div class="card-p-text">TEKNİK DANIŞMANLIK
+          </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card-p">
+        <div class="card-p-icon"><i class="bi bi-alarm"></i></div>
+        <div class="card-p-text">ZAMAN YÖNETİMİ</div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card-p">
+        <div class="card-p-icon"><i class="bi bi-pc-display"></i></div>
+        <div class="card-p-text">TEKNOLOJİK ÇÖZÜMLER</div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card-p">
+        <div class="card-p-icon"><i class="bi bi-ear-fill"></i></div>
+        <div class="card-p-text">HİZMET DESTEĞİ</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid section-iletişim">
+  <div style="text-align: center;" class="row">
+    <div style="font-weight: 600; padding-top: 60px; font-size: 2.5rem; padding-bottom: 50px;" class="col-12">Biz sizi arayalım</div>
+  </div>
+  <div class="row pb-5">
+    <form>
+      Adınız,Soyadınız: <br>
+      <input style="width: 100%; border-style: hidden; border-radius: 10px;" type="text" id="name">
+    </form>
+  </div>
+  <div class="row pb-5">
+    <form>
+      Telefon numaranız: <br>
+      <input style="width: 100%; border-style: hidden; border-radius: 10px; color: grey;" type="number" maxlength="10" value="(5xx)-xxx-xx-xx">
+    </form>
+  </div>
+  <div class="row preference-section-button">
+    <button class="button-19" role="button">Gönder</button>
+  </div>
+</div>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row" style="padding-top: 70px;">
+    <div class="col-md-4 ">
+      <img src="./img/Hijyen-Logo.png" class="footer-logo">
+      <br>
+      <div class="footer-text">HİJYEN AKADEMİ TARAFINDAN Profesyonel Ekibimizle , M.E.B ve Üniversite onaylı tüm kurum ve kuruluşlara danışmanlık vermekteyiz.
+      </div>
+      
+     
+    </div>
+    <div class="col-md-4 ">
+      <div class="footer-title"><b class="p-1"><i class="bi bi-align-start"></i>Çalışma saatleri</b></div>
+      <div class="footer-connections">
+        <a class="footer-connections-item" href="#">pazartesi - Cuma: 7:00 - 17:00</a>
+        <a class="footer-connections-item" href="#">Cumartesi: 7:00 - 12:00</a>
+       
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="footer-text footer-title"><b class="p-1">E-BÜLTEN</b></div>
+      <div class="footer-text">E-bültenimize kayıt olarak etkinliklerimizden haberdar olabilirsiniz.</div>
+      <div class="input-group">
+        <input type="text" class="form-control form-value border-0" id="fldAboneOl">
+        <div class="input-group-btn">
+          <button type="button" style="margin-left:0; height:34px" class="btn btn-default w-100 h-100 border-0" onclick="AboneOl()">Abone Ol</button>
+        </div>
+      </div>
+      <div class="footer-text footer-title footer-social-title"><b class="p-1">SOSYAL MEDYA</b></div>
+      <div class="footer-text">Bizi sosyal medyadan takip edin.</div>
+       <div class="footer-social-icons">
+        <i class="bi footer-icon bi-facebook"></i>
+        <i class="bi footer-icon bi-instagram"></i>
+
+       </div>
+    </div>
+  </div>
+</div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script>
+  const modal = document.querySelector('.modal-custom');
+  const overlay = document.querySelector('.overlay');
+  const btnCloseModal = document.querySelector('.btn--close-modal');
+  const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+
+  const openModal = function (e) {
+    e.preventDefault();
+    modal.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+  };
+
+  const closeModal = function () {
+    modal.classList.add('hidden');
+    overlay.classList.add('hidden');
+  };
+  btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal));
+
+  btnCloseModal.addEventListener('click', closeModal);
+  overlay.addEventListener('click', closeModal);
+</script>
+
+<script>
+  const modal2 = document.querySelector('.modal--custom-kayıt');
+  const overlay2 = document.querySelector('.overlay');
+  const btnCloseModal2 = document.querySelector('.btn--close-modal');
+  const btnsOpenModal2 = document.querySelectorAll('.kayıt--show-modal');
+
+  const openModal2 = function (e) {
+    e.preventDefault();
+    modal2.classList.remove('hidden');
+    overlay2.classList.remove('hidden');
+  };
+
+  const closeModal2 = function () {
+    modal2.classList.add('hidden');
+    overlay2.classList.add('hidden');
+  };
+  btnsOpenModal2.forEach(btn => btn.addEventListener('click', openModal2));
+
+  btnCloseModal2.addEventListener('click', closeModal2);
+  overlay2.addEventListener('click', closeModal2);
+</script>
+
+
+</html>

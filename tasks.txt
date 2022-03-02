@@ -1,0 +1,15 @@
+---TASKS---
+[] -> admin login paneli - r
+[] -> admin dashboard(anasayfa) - r
+[] -> admin dashboard blog - r
+[] -> rendering HTML Files -> Mainpage - ö
+[] -> rendering HTML Files -> - ö
+[] -> rendering HTML Files - ö
+[] -> rendering HTML Files - ö
+[] -> rendering HTML Files - ö
+[] -> Login 
+[] -> Test & Sending Mail
+[] -> Sign up
+[] -> 
+[] -> 
+[] -> 

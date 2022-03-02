@@ -1,0 +1,17 @@
+<%- include('head'); %>
+<body>
+   
+   
+    <ul>
+        <% data.forEach(function(data) { %>
+          <li>
+            <strong><%= data.userName %></strong>
+            representing <%= data.organization %>,
+            born <%= data.birth_year %>
+          </li>
+        <% }); %>
+      </ul>
+      <%- include('footer'); %>
+
+</body>
+</html>
