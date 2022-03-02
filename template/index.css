@@ -491,3 +491,8 @@ footer{
     border-radius: 7px;
     border-style: none;
   }
+
+  .form-admin-login{
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+  }

@@ -15,15 +15,25 @@
 </head>
 <body>
     <div  class="container-fluid sectionAdminLogin">
-        <div style="align-content: center; text-align: center; padding-top: 7vw;" class="row">
-            <h1>Admin Log In</h1>
-            <form action="">
-                <label style="color: white; font-weight: 400;">Ad Soyad</label>
-                <input name="adminName" type="text" required /> <br>
-                <label style="color: white; font-weight: 400;">Şifre</label>
-                <input name="adminPassword" type="text" required/> <br>
-                <button  type="submit">Giriş yap <i class="bi bi-arrow-bar-right"></i></button>
-            </form>
+        <div class="row d-flex flex-column justify-content-center align-content-center" >
+           
+            <form class="w-50 form-admin-login" style="margin-top: 7vw;">
+                <h1>Admin Log In</h1>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+              </form>
 
         </div>
     </div>
