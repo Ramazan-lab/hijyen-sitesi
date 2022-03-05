@@ -42,6 +42,7 @@
 
   .card-section {
     background-color: rgb(196, 226, 233);
+
   }
   .card-section i , .card-section h1{
     color: var(--lacivert);
@@ -51,7 +52,7 @@
   }
 
   .card {
-    background-color: rgb(196, 226, 233);
+    background-color: var(--blue) !important;
     border-style: hidden;
   }
 
@@ -90,8 +91,9 @@
     color: grey;
     font-weight: 600;
   }
-
-  /* section iletisim /contact part */
+  .section-why .row{
+   background: linear-gradient(to right, white, var(--blue));
+  }
   .preference-section-title {
     padding-bottom: 20px;
     padding-top: 20px;
@@ -301,13 +303,14 @@
   }
 
   .custom-button {
-    background: linear-gradient(
-      to right,
-      rgb(136, 196, 236),
-      rgb(55, 243, 149)
-    ) !important;
-    border: none;
+    padding: 10px;
+    border-style: none;
+    background-color: var(--lacivert);
+    color: white;
   }
+
+  .custom-button:hover{
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;}
 
   .quiz-container {
     background-color: #fff;
@@ -448,15 +451,19 @@
     background-color: white;
     color: var(--lacivert);
   }
-  .section-eğitimler {
+
+
+  .section-egitimler {
     background-color: #f4fcfd;
-    padding-bottom: 60px;
   }
-  .section-eğitimler img {
+  .section-egitimler img {
     width: 100%;
     height: 80%;
+    border:2px solid var(--lacivert);
+    box-shadow: rgba(64, 147, 243, 0.25) 0px 13px 27px -5px, rgba(60, 206, 243, 0.3) 0px 8px 16px -8px;
+
   }
-  .section-eğitimler h4 {
+  .section-egitimler h4 {
     color: #002249;
     font-size: 1.4rem;
     font-weight: 500;
@@ -474,11 +481,37 @@
     padding-bottom: 55px;
   }
   .section-we {
-    background-image: url(./img/we-banner.jpg);
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
+    position:relative;
 
+  }
+  .section-we *{
+    color:#fff !important;
+    font-weight: 600 !important;
+  }
+  .section-we-background{
+    background:url('/images/we-background.jpg');
+    position:absolute;
+    filter:blur(5px);
+    width:100%;
+    height:100%;
+    z-index:-2;
+    filter: blur(1px);
+
+
+  }
+  .section-we-background-filter{
+    position:absolute;
+    background-color:var(--lacivert);
+    width:100vw;
+    opacity:0.5;
+    height:100%;
+    height:100%;
+
+    z-index:-1;
+  }
+  .section-we-content {
+    padding:5rem;
+  }
   .horizantal-cards h5 {
     color: #002249;
   }
@@ -491,7 +524,7 @@
   /* Admin login css kodları */
 
   .sectionAdminLogin {
-    background-image: url(./img/pexels-tranmautritam-285814.jpg);
+    background-image: url(/images/pexels-tranmautritam-285814.jpg);
     height: 100vh;
     width: 100vw;
     background-size: cover;
@@ -542,6 +575,56 @@
 
   }
 
+  .section-belge ul{
+    list-style: none;
+  }
+
 
   /* footer */
+  .neden-almalisiniz{
+    position:relative;
+  }
+  .neden-almalisiniz-background{
+
+    background: url('/images/neden-sertifica.svg');
+    background-size: cover;
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-repeat:no-repeat;
+
+    z-index:-2;
+  }
+
+
+
+  .neden-almalisiniz-background-img img{
+    border:2px solid #fff;
+    border-radius: 5px;
+    width:100%;
+  }
+  .neden-almalisiniz-background-img * {
+    color:#fff;
+  }
+  .neden-almalisiniz-background-img a {
+    border-radius: 5px;
+    display:block;
+    width:300px;
+    height: 64px;
+    text-align: center;
+    font-size:1.8rem;
+    font-weight: 600;
+    text-decoration: none;
+
+  }
+  .neden-almalisiniz-background-img a:hover{
+    transition:0.5s ease-in-out;
+    border:2px solid transparent;
+    color:var(--lacivert) !important;
+    background-color:#fff !important;
+  }
+  .neden-almalisiniz-background-img a:hover i {
+    transition:0.5s ease-in-out;
+    color:var(--lacivert);
+  }
 </style>
