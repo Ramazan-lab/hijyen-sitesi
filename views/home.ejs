@@ -1,16 +1,15 @@
 <%- include('head'); %>
 <body>
   <%- include('navbar'); %>
-   
   <div class=" container-fluid section-banner">
-    <div class="row section-banner-row">
+    <div class="row">
     
       <div style="padding-left: 15vw; padding-top: 7vw;" class="col-md-7">
       <h5 style="font-size: 1.5rem; font-weight: 380; color: rgb(120, 182, 207);">Tüm Belgelerimiz M.E.B ve Üniversite Onaylıdır.</h5>
       <h1 style="padding-bottom: 20px; color: #002249; font-weight: 700; font-size: 3rem;">Hijyene Dair Herşey...</h1>
       <button style=" width: 70%; border-style: none; background-color:rgb(72, 133, 190); color: white !important; padding-top: 15px; padding-bottom: 15px; font-size: 1.2rem;"><i class="bi bi-headset"></i> Hızlı Başvuru İçin Hemen Tıklayın !</button>
       </div>
-      <div class="col-md-5"><img style="width: 70%; height: 100%; " src="/images/man-banner.png" alt=""></div>
+      <div class="col-md-5 section-banner-right pt-5 pt-md-1"><img class="img-fluid"  src="/images/man-banner.png" alt=""></div>
     </div>
     </div>
     
@@ -18,54 +17,49 @@
     
     <div class="container-fluid card-section">
       <div class="row text-center">
-        
-    
-        <div class="col-sm-3 p-5">
+        <div class="col-12 col-md-3 p-5">
           <div class="card">
             <div class="card-icon"> 
-    
               <i class="bi bi-people-fill"></i>
-    
             </div>
             <div class="card-text">
-              <h1 style="font-size: 2rem; color: grey;">uzman eğitim kadrosu</h1>
-              <h1 style="font-size: 1rem; color: grey;" class="pt-3">Kadromuzdaki her bir eğitmen alanlarında uzmandır.</h1>
+              <h1 style="font-size: 1.4rem; ">uzman eğitim kadrosu</h1>
+              <h1 style="font-size: 0.9rem; color: grey;" class="pt-3">Kadromuzdaki her bir eğitmen alanlarında uzmandır.</h1>
             </div>
           </div>
         </div>
-    
-        <div class="col-sm-3 p-5">
+        <div class="col-12 col-md-3 p-5">
           <div class="card">
             <div class="card-icon">
               <i class="bi bi-emoji-smile"></i>
             </div>
             <div class="card-text">
-              <h1 style="font-size: 2rem; color: grey;">Güler yüzlü hizmet</h1>
-              <h1 style="font-size: 1rem; color: grey;" class="pt-3">Kurumumuza adım attığınız anda sizi güler yüzlü çalışanlarımız karşılar.</h1>
+              <h1 style="font-size: 1.4rem;">Güler yüzlü hizmet</h1>
+              <h1 style="font-size: 0.9rem; color: grey;" class="pt-3">Kurumumuza adım attığınız anda sizi güler yüzlü çalışanlarımız karşılar.</h1>
             </div>
           </div>
         </div>
     
-        <div class="col-sm-3 p-5">
+        <div class="col-12 col-md-3 p-5">
           <div class="card">
             <div class="card-icon">
               <i class="bi bi-hand-thumbs-up-fill"></i>
             </div>
             <div class="card-text">
-              <h1 style="font-size: 2rem; color: grey;">100% Müşteri memnuniyeti</h1>
-              <h1 style="font-size: 1rem; color: grey;" class="pt-3">Amatör ruh, profesyonel hizmet yaklaşımı sonucunda mutlu müşterilere sahibiz.</h1>
+              <h1 style="font-size: 1.4rem; ">100% Müşteri memnuniyeti</h1>
+              <h1 style="font-size: 0.9rem; color: grey;" class="pt-3">Amatör ruh, profesyonel hizmet yaklaşımı sonucunda mutlu müşterilere sahibiz.</h1>
             </div>
           </div>
         </div>
     
-        <div class="col-sm-3 p-5">
+        <div class="col-12 col-md-3 p-5">
           <div class="card">
             <div class="card-icon">
               <i class="bi bi-check-square-fill"></i>
             </div>
             <div class="card-text">
-              <h1 style="font-size: 2rem; color: grey;">Kurum odaklılık</h1>
-              <h1 style="font-size: 1rem; color: grey;" class="pt-3">Kurumları tanıyor, yaşadıkları sorunları biliyoruz. Kurumsal çözümler üretiyoruz.</h1>
+              <h1 style="font-size: 1.4rem; ">Kurum odaklılık</h1>
+              <h1 style="font-size: 0.9rem; color: grey;" class="pt-3">Kurumları tanıyor, yaşadıkları sorunları biliyoruz. Kurumsal çözümler üretiyoruz.</h1>
             </div>
           </div>
         </div>
@@ -73,6 +67,7 @@
       
     </div>
     </div>
+    
     
     <div class="container-fluid">
       <div style="background-image:url(/images/100firma-banner.jpg);" class="row">
@@ -207,26 +202,7 @@
       </div>
     </div>
     
-    <div class="container-fluid section-iletişim">
-      <div style="text-align: center;" class="row">
-        <div style="font-weight: 600; padding-top: 60px; font-size: 2.5rem; padding-bottom: 50px;" class="col-12">Biz sizi arayalım</div>
-      </div>
-      <div class="row pb-5">
-        <form>
-          Adınız,Soyadınız: <br>
-          <input style="width: 100%; border-style: hidden; border-radius: 10px;" type="text" id="name">
-        </form>
-      </div>
-      <div class="row pb-5">
-        <form>
-          Telefon numaranız: <br>
-          <input style="width: 100%; border-style: hidden; border-radius: 10px; color: grey;" type="number" maxlength="10" value="(5xx)-xxx-xx-xx">
-        </form>
-      </div>
-      <div class="row preference-section-button">
-        <button class="button-19" role="button">Gönder</button>
-      </div>
-    </div>
+  <%- include('contact') %>
 
   <%- include('footer'); %>
   <%- include('scripts') %>
