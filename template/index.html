@@ -88,10 +88,10 @@
             <a class="nav-link active" href="iletişim-page.html">Iletişim</a>
           </li>
           <li class="nav-item">
-            <a  style="color: rgb(20, 235, 250);" class="nav-link active btn--show-modal" href="">Giriş yap</a>
+            <a   class="nav-link active btn--show-modal" href="">Giriş yap</a>
           </li>
           <li class="nav-item">
-            <a style="color: rgb(20, 235, 250);" class="nav-link active kayıt--show-modal" href="">kayıt Ol</a>
+            <a  class="nav-link active kayıt--show-modal" href="">kayıt Ol</a>
           </li>
          
         </ul>
@@ -102,13 +102,15 @@
 
 
     <div class="modal-custom hidden">
-      <button class="btn--close-modal">&times;</button>
-      </h2>
+      <button class="btn--close-modal"><i class="bi bi-x-square"></i></button>
+      <h4 style="color: white; text-align: center; font-style: italic; padding: 10px;">akademiye giriş yap</h4>
+
       <form class="modal__form">
+        
         <label style="color: white; font-weight: 400;">E-Posta</label>
         <input type="email" />
         <label style="color: white; font-weight: 400;">Şifre</label>
-        <input type="text" />
+        <input type="password" />
         <button class="btn-modal">Giriş yap <i class="bi bi-arrow-bar-right"></i></button>
       </form>
     </div>
@@ -116,8 +118,8 @@
 
 
     <div class="modal--custom-kayıt hidden">
-      <button class="btn--close-modal">&times;</button>
-      </h2>
+      <button class="btn--close-modal"><i class="bi bi-x-square"></i></button>
+      <h4 style="color: white; text-align: center; font-style: italic; padding: 10px;">akademiye kayıt yap</h4>
       <form action="/users/create" method="POST" class="modal__form">
         <label style="color: white; font-weight: 400;">Ad Soyad</label>
         <input name="userName" type="text" required />
@@ -126,7 +128,7 @@
         <label style="color: white; font-weight: 400;">Telefon numarası</label>
         <input name="userNumber" type="number" placeholder="(5xx) xxx xx xx" required/>
         <label style="color: white; font-weight: 400;">Şifre</label>
-        <input name="userPassword" type="text" required/>
+        <input name="userPassword" type="password" required/>
         <button type="submit" class="btn-modal">Kayıt ol <i class="bi bi-arrow-bar-right"></i></button>
       </form>
     </div>

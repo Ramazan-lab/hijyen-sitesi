@@ -3,6 +3,9 @@
 :root{
   --font-arvo:font-family: 'Arvo', serif;
   --font-opensans: 'Open Sans', sans-serif;
+
+  --blue:rgb(196, 226, 233);
+  --lacivert:#002249;
 }
 .navbar img {
   width: 200px;
@@ -12,7 +15,17 @@
   font-weight: 700;
 }
 .nav-link:hover {
-  color: #1dabe0 !important;
+  background-color: var(--lacivert);
+  border-radius: 5px;
+  color: white !important;
+}
+
+.btn--show-modal{
+color:var(--lacivert) !important;
+}
+
+.kayıt--show-modal{
+  color:var(--lacivert) !important;
 }
 .section-banner {
   background: linear-gradient(to right, white, #d4e4f7);
@@ -22,42 +35,7 @@
   background: linear-gradient(to right, white, #d4e4f7);
 }
 
-.image-Text {
-  margin-top: -30%;
-  text-indent: 15%;
-}
-.image-Text a {
-  background-image: linear-gradient(
-    92.88deg,
-    #455eb5 9.16%,
-    #5643cc 43.89%,
-    #673fd7 64.72%
-  );
-  border-radius: 8px;
-  border-style: none;
-  box-sizing: border-box;
-  color: #ffffff;
-  cursor: pointer;
-  flex-shrink: 0;
-  font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-    sans-serif;
-  font-size: 1vw;
-  font-weight: 500;
-  height: 4rem;
-  padding: 0 1.6rem;
-  text-align: center;
-  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
-  transition: all 0.5s;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  text-decoration: none;
-}
-.image-Text a:hover {
-  box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
-  transition-duration: 0.1s;
-}
+
 
 .card-section {
   background-color: rgb(196, 226, 233);
@@ -336,7 +314,7 @@ footer {
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 60rem;
-  background: linear-gradient(to right, rgb(87, 57, 75), #d4e4f7) !important;
+  background: linear-gradient(to right, var(--lacivert), #d4e4f7) !important;
   padding: 2rem 2rem;
   box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
   z-index: 1000;
@@ -375,12 +353,16 @@ footer {
   font-family: inherit;
   color: inherit;
   position: absolute;
-  top: 0.5rem;
-  right: 2rem;
-  font-size: 4rem;
+  top: 0.05rem;
+  right: 0.6rem;
+  font-size: 3rem;
   cursor: pointer;
   border: none;
   background: none;
+}
+
+.btn--close-modal :hover{
+  color: white !important;
 }
 
 .hidden {
@@ -394,7 +376,7 @@ footer {
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 60rem;
-  background: linear-gradient(to right, rgb(87, 57, 75), #d4e4f7) !important;
+  background: linear-gradient(to right, var(--lacivert), #d4e4f7) !important;
   padding: 2rem 2rem;
   box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
   z-index: 1000;
@@ -405,11 +387,17 @@ footer {
 
 .btn-modal {
   border-radius: 2px;
-  background: linear-gradient(to right, rgb(109, 74, 109), rgb(121, 202, 223));
+  background-color:transparent;
   border-radius: 5px;
   border-style: none;
   font-weight: 400;
   color: white;
+  border:2px solid white; 
+  
+}
+.btn-modal:hover{
+  background-color: white;
+  color: var(--lacivert);
 }
 .section-eğitimler {
   background-color: #f4fcfd;
