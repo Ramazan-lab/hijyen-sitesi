@@ -1,6 +1,13 @@
+0-bişey göndermeden önce mutlaka al:git pull
 1-git add .
 2-git commit -m "your message"
 3-git push
 
 
 4-git pull
+
+
+
+
+
+

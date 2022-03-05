@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Webdevproof</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="index.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" type="text/css" href="./slick/slick.css" />
+        <link rel="stylesheet" type="text/css" href="./slick/slick-theme.css" />
+    </head>
+<body style="background-image: url(./img/pexels-ovan-57690.jpg);">
+        
+      <div class="sidebar" id="mySideBar">
+        <a style="margin-top: -9px;" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="bi bi-box-arrow-in-left"></i></a>
+        <a class="active" href="admin-page.html">Home</a>
+        <a href="kullanıcılar.html">Kullanıcılar</a>
+        <a href="results.html">Sınavı geçenler</a>
+        <a href="sertificate.html">Sertfika alanlar</a>
+        <a href="need-connnect.html">iletişime geçilecekler</a>
+        <a href="#">Tıklanma sayısı</a>
+        <a href="changes.html">Değişiklikler</a>
+      </div>
+      <span onclick="openNav()"><i style="font-size: 2.5rem;"  class="bi bi-justify"></i></span>
+      
+      <div class="row">
+          <div class="col-12">
+              <h1 style="text-decoration: underline; text-align: center; font-style: italic; color: white; ">Yönetim Merkezi</h1>
+          </div>
+      </div>
+
+      <div class="container adpnl">
+          <div class="row">
+              <div class="col-md-6 ">
+                <div class="admincard">
+                    <i class="bi bi-person-circle"></i>
+                    <div class="container">
+                      <h4><b>Siteye giriş yapan kullanıcılar</b></h4>
+                      <p>Architect & Engineer</p>
+                    </div>
+                  </div>
+          </div>
+          <div class="col-md-6">
+            <div class="admincard">
+                <i class="bi bi-journal-check"></i>
+                <div class="container">
+                  <h4><b>Sertifika Alanlar</b></h4>
+                  <p>Architect & Engineer</p>
+                </div>
+              </div>
+          </div>
+        </div>
+          <div class="row">
+
+            <div class="col-md-6">
+                <div class="admincard">
+                    <i class="bi bi-currency-dollar"></i>
+                    <div class="container">
+                      <h4><b>Toplam Kazanç</b></h4>
+                      <p>Architect & Engineer</p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-md-6">
+                <div class="admincard">
+                    <i class="bi bi-envelope-fill"></i>
+                    <div class="container">
+                      <h4><b>İstek bekleyenler</b></h4>
+                      <p>Architect & Engineer</p>
+                    </div>
+                  </div>
+            </div>
+          </div>
+      </div>
+
+
+
+    
+</body>
+
+<script>
+    function openNav() {
+  document.getElementById("mySideBar").style.width = "250px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  document.getElementById("mySideBar").style.width = "0";
+}
+</script>
+</html>

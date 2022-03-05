@@ -496,3 +496,79 @@ footer{
     background-color: rgba(0, 0, 0, 0.5);
     padding: 2rem;
   }
+  .form-admin-login label{
+    color: white;
+  }
+
+  .sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+  
+  /* Sidebar links */
+  .sidebar a {
+    display: block;
+    color: white;
+    padding: 16px;
+    text-decoration: none;
+  }
+  
+  /* Active/current link */
+  .sidebar a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+  /* Links on mouse-over */
+  .sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+
+ 
+
+  .sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  .adpnl{
+    text-align: center;
+    padding: 30px;
+    
+    
+  }
+
+  .admincard {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(248, 245, 245, 0.2);
+    transition: 0.3s;
+    background-color:rgba(0, 0, 0, 0.5);
+  }
+  
+  /* On mouse-over, add a deeper shadow */
+  .admincard:hover {
+    box-shadow: 0 8px 16px 0 rgba(243, 243, 243, 0.2);
+  }
+
+  .admincard i{
+    font-size: 2.5rem;
+    color: white !important;
+  }
+  .admincard b{
+    color: white;
+  }
+  
+  .allusers{
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 300px;
+    margin-top: 30px;
+  }

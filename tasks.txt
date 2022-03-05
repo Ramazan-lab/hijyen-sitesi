@@ -1,5 +1,5 @@
 ---TASKS---
-[] -> admin login paneli - r
+[x] -> admin login paneli - r
 [] -> admin dashboard(anasayfa) - r
 [] -> admin dashboard blog - r
 [] -> rendering HTML Files -> Mainpage - ö
