@@ -38,14 +38,14 @@ color:var(--lacivert) !important;
 
 
 .card-section {
-  background-color: rgb(196, 226, 233);
+  background-color: rgb(228, 240, 240);
 }
 .card-icon i {
   font-size: 4rem;
 }
 
 .card {
-  background-color: rgb(196, 226, 233);
+  background-color: rgb(228, 240, 240);
   border-style: hidden;
 }
 
@@ -79,6 +79,9 @@ color:var(--lacivert) !important;
 .card-p-text {
   color: grey;
   font-weight: 600;
+}
+.section-why .row{
+ background: linear-gradient(to right, white, var(--blue));
 }
 .preference-section-title {
   padding-bottom: 20px;
@@ -252,13 +255,14 @@ footer {
 }
 
 .custom-button {
-  background: linear-gradient(
-    to right,
-    rgb(136, 196, 236),
-    rgb(55, 243, 149)
-  ) !important;
-  border: none;
+  padding: 10px;
+  border-style: none;
+  background-color: var(--lacivert);
+  color: white;
 }
+
+.custom-button:hover{
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;}
 
 .quiz-container {
   background-color: #fff;
@@ -492,3 +496,8 @@ footer {
   font-size:1.2rem;
 
 }
+
+.section-belge ul{
+  list-style: none;
+}
+
