@@ -626,3 +626,41 @@ footer {
   transition:0.5s ease-in-out;
   color:var(--lacivert);
 }
+
+
+/* online page */
+.online-page-banner
+{
+  height:40vh;
+  padding:25px;
+}
+.online-page-banner img {
+  border-radius: 2%;
+ 
+}
+.online-page-form-content form{
+  padding:5rem;
+}
+
+.online-page-form-content label {
+  font-weight: lighter;
+}
+.online-page-form-content input {
+  border:2px solid var(--blue);
+  border-radius: 1rem;
+  
+}
+.online-page-form-content input:focus{
+  outline:none !important;
+  box-shadow: none !important;
+  
+}
+.online-page-form-content .form-group{
+  margin-bottom:15px;
+}
+.online-page-form-content button {
+  font-weight: lighter;
+  background:var(--lacivert) !important;
+  font-size: 1.3rem;
+  border-radius:2rem;
+}
