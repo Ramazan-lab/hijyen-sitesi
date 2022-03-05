@@ -66,16 +66,23 @@ router.get("/results2", function (req, res, next) {
   });
 });
 //
-router.get("/results", function (req, res, next) {
-  let sqlSorgusu = "SELECT * FROM users";
-  con.connect(function (err) {
-    con.query(sqlSorgusu, function (err, results, fields) {
-      res.status(200).json({
-        status: "bekliyor...",
-        message: results,
-      });
-    });
-  });
+router.get("/hijyen-belgesi", function (req, res, next) {
+  res.render("pages/hijyen-belgesi");
+});
+router.get("/iletisim", function (req, res, next) {
+  res.render("pages/iletisim");
+});
+router.get("/basvuru", function (req, res, next) {
+  res.render("pages/basvuru");
+});
+router.get("/blog", function (req, res, next) {
+  res.render("pages/blog");
+});
+router.get("/sinav", function (req, res, next) {
+  res.render("pages/sinav");
+});
+router.get("/sss", function (req, res, next) {
+  res.render("pages/sss");
 });
 //user listeleme
 router.route("/").get((req, res, next) => {

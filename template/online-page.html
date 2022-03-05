@@ -87,107 +87,45 @@
     </div>
     <div class="overlay hidden"></div>
 
-    <div class="container-fluid" style="background-color: rgb(228, 240, 240); ">
-        <div class="row" style="justify-content: center;">
+    <div class="container-fluid online-page-banner d-flex justify-content-center" style="background-color: rgb(228, 240, 240); ">     
+           <img src="./img/online.jpg" alt="">
+    </div>
+
+    <div class="container-fluid p-5">
+      <div class="online-page-form-content"><!-- adsoyad,telno,eposta,ticari ünvan,adress,website(zorunlu degil) -->
+        <form>
+          <div class="form-group">
+            <label for="name">Ad soyad *</label>
+            <input type="text" class="form-control" id="name" required>
+          </div>
+          <div class="form-group">
+            <label for="telno">Tel no *</label>
+            <input type="text" class="form-control" id="telno" required>
+          </div>
+          <div class="form-group">
+            <label for="eposta">E posta *</label>
+            <input type="text" class="form-control" id="eposta" required>
+          </div>
+          <div class="form-group">
+            <label for="ticariunvan">Ticaret Ünvanı *</label>
+            <input type="text" class="form-control" id="ticariunvan" required>
+          </div>
+          <div class="form-group">
+            <label for="adres">Adres *</label>
+            <input type="text" class="form-control" id="adres" required>
+          </div>
+          <div class="form-group">
+            <label for="website">Website (Zorunlu Değil)</label>
+            <input type="text" class="form-control" id="website" required>
+          </div>
           
-           <img style="width: 35rem; border-radius: 60px;" src="./img/online.jpg" alt="">
-           
-            
-        </div>
-    </div>
-
-    <div style="padding-top: 60px; margin-bottom: 50px;" class="container">
-    <div class="row">
-        <div style="padding-left: 6vw;" class="col-md-12">
-        <form name="iletişim-form" action="" onsubmit=" validateForm()" method="post" required>
-            Ad Soyad:
-            <input id="1" name="fname" style="margin-bottom: 20px; background-color: rgb(227, 251, 252); width: 100%; border-style: hidden; border-radius: 10px; color: grey;" type="text">
-            
-            Telefon nuamrası:
-            <input id="2" name="number" style="margin-bottom: 20px; background-color: rgb(227, 251, 252); width: 100%; border-style: hidden; border-radius: 10px; color: grey;"type="number" maxlength="10" value="(5xx)-xxx-xx-xx">
-        
-            E-Posta:
-            <input id="3" name="mail" style="margin-bottom: 20px; background-color: rgb(227, 251, 252); width: 100%; border-style: hidden; border-radius: 10px; color: grey;" type="text">
-
-            Ticaret ünvanı:
-            <input id="4" name="ünvan" style="margin-bottom: 20px; background-color: rgb(227, 251, 252); width: 100%; border-style: hidden; border-radius: 10px; color: grey;" type="text">
-
-            Adres:
-            <input id="5" name="adres" style="margin-bottom: 20px; background-color: rgb(227, 251, 252); width: 100%; border-style: hidden; border-radius: 10px; color: grey;" type="text">
-
-            Web site(zorunlu değil):
-            <input  style="margin-bottom: 20px; background-color: rgb(227, 251, 252); width: 100%; border-style: hidden; border-radius: 10px; color: grey;" type="text">
-
-            <input type="submit" name="" id="" style="background-color: rgb(191, 241, 243); border-radius: 15px; border-style: none;">
-
+         
+          <button type="submit" class="btn btn-primary w-100">Gönder</button>
         </form>
-       
-        
-        </div>
-       
-    </div>
-    </div>
-
-    <div class="container-fluid section-iletişim">
-        <div style="text-align: center;" class="row">
-          <div style="font-weight: 600; padding-top: 60px; font-size: 2.5rem; padding-bottom: 50px;" class="col-12">Biz sizi arayalım</div>
-        </div>
-        <div class="row pb-5">
-          <form>
-            Adınız,Soyadınız: <br>
-            <input style="width: 100%; border-style: hidden; border-radius: 10px;" type="text" id="name">
-          </form>
-        </div>
-        <div class="row pb-5">
-          <form>
-            Telefon numaranız: <br>
-            <input style="width: 100%; border-style: hidden; border-radius: 10px; color: grey;" type="number" maxlength="10" value="(5xx)-xxx-xx-xx">
-          </form>
-        </div>
-        <div class="row preference-section-button">
-          <button class="button-19" role="button">Gönder</button>
-        </div>
       </div>
-      
-      <footer>
-        <div class="container">
-          <div class="row" style="padding-top: 70px;">
-          <div class="col-md-4 ">
-            <img src="./img/Hijyen-Logo.png" class="footer-logo">
-            <br>
-            <div class="footer-text">HİJYEN AKADEMİ TARAFINDAN Profesyonel Ekibimizle , M.E.B ve Üniversite onaylı tüm kurum ve kuruluşlara danışmanlık vermekteyiz.
-            </div>
-            
-           
-          </div>
-          <div class="col-md-4 ">
-            <div class="footer-title"><b class="p-1"><i class="bi bi-align-start"></i>Çalışma saatleri</b></div>
-            <div class="footer-connections">
-              <a class="footer-connections-item" href="#">pazartesi - Cuma: 7:00 - 17:00</a>
-              <a class="footer-connections-item" href="#">Cumartesi: 7:00 - 12:00</a>
-             
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="footer-text footer-title"><b class="p-1">E-BÜLTEN</b></div>
-            <div class="footer-text">E-bültenimize kayıt olarak etkinliklerimizden haberdar olabilirsiniz.</div>
-            <div class="input-group">
-              <input type="text" class="form-control form-value border-0" id="fldAboneOl">
-              <div class="input-group-btn">
-                <button type="button" style="margin-left:0; height:34px" class="btn btn-default w-100 h-100 border-0" onclick="AboneOl()">Abone Ol</button>
-              </div>
-            </div>
-            <div class="footer-text footer-title footer-social-title"><b class="p-1">SOSYAL MEDYA</b></div>
-            <div class="footer-text">Bizi sosyal medyadan takip edin.</div>
-             <div class="footer-social-icons">
-              <i class="bi footer-icon bi-facebook"></i>
-              <i class="bi footer-icon bi-instagram"></i>
-      
-             </div>
-          </div>
-        </div>
-      </div>
-      </footer>
+    </div>
+  
+    
 
 
 </body>

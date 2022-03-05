@@ -27,9 +27,11 @@ color:var(--lacivert) !important;
 .kayıt--show-modal{
   color:var(--lacivert) !important;
 }
+/* Section banner */
 .section-banner {
   background: linear-gradient(to right, white, #d4e4f7);
 }
+
 
 .navbar {
   background: linear-gradient(to right, white, #d4e4f7);
@@ -38,14 +40,18 @@ color:var(--lacivert) !important;
 
 
 .card-section {
-  background-color: rgb(228, 240, 240);
+  background-color: rgb(196, 226, 233);
+  
+}
+.card-section i , .card-section h1{
+  color: var(--lacivert);
 }
 .card-icon i {
   font-size: 4rem;
 }
 
 .card {
-  background-color: rgb(228, 240, 240);
+  background-color: var(--blue) !important;
   border-style: hidden;
 }
 
@@ -74,7 +80,11 @@ color:var(--lacivert) !important;
   background-color: white;
 }
 .card-p-icon {
+
   font-size: 3rem;
+}
+.card-p-icon i{
+  color:var(--lacivert);
 }
 .card-p-text {
   color: grey;
@@ -87,15 +97,27 @@ color:var(--lacivert) !important;
   padding-bottom: 20px;
   padding-top: 20px;
 }
-.section-iletişim {
+.section-iletisim {
   padding-left: 15vw;
   padding-right: 15vw;
 
   background-color: rgb(228, 240, 240);
 }
-.preference-section-button {
-  padding-bottom: 5vw;
+.section-iletisim form{
+  width:80%;
 }
+.section-iletisim input {
+  border:none;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+
+.section-iletisim label{
+  font-weight: lighter;
+  padding:5px;
+}
+
 
 /* CSS */
 .preference-section-button button {
@@ -116,7 +138,7 @@ color:var(--lacivert) !important;
   margin: 0;
   outline: none;
   overflow: visible;
-  padding: 13px 16px;
+  padding: 10px 12px;
   text-align: center;
   text-transform: uppercase;
   touch-action: manipulation;
@@ -156,6 +178,7 @@ color:var(--lacivert) !important;
 .button-19:disabled {
   cursor: auto;
 }
+/* Footer section */
 footer {
   background-color: #484848;
   padding-bottom: 5rem;
@@ -172,7 +195,7 @@ footer {
 }
 .footer-connections-item {
   text-decoration: none;
-  color: #d6d6d6;
+  color: #a9a9a9;
   display: block;
   margin-top: 12px;
 }
@@ -180,27 +203,51 @@ footer {
   color: #ededed;
 }
 .footer-title {
-  color: #d6d6d6;
+  color: #a9a9a9;
 }
 .btn-default {
   background-color: #444;
-  color: #fff;
+  color: #a9a9a9;
+  border:2px solid #a9a9a9 !important;
 }
 
+.btn-default:hover{
+  background-color:#ededed;
+  color:#444;
+}
 .footer-social-title {
   margin-top: 2rem;
 }
 .footer-icon {
-  color: #505050 !important;
+  color: #ededed !important;
+  border:2px solid #ededed !important;
+  border-radius: 0.6rem;
   font-size: 1.4rem;
+  width:80px;
+  height:80px;
   padding: 10px;
   margin-right: 10px;
 }
 .footer-icon:nth-child(1):hover {
+  transition:0.5s ease-in-out;
   color: white !important;
   background: #3b5998 !important;
   cursor: pointer;
 }
+.footer-icon:nth-child(2):hover {
+  transition:0.5s ease-in-out;
+  color: white !important;
+  background: linear-gradient(45deg,#fccc63,#fbad50,#cd486b ,#bc2a8d,#8a3ab9,#4c68d7 ) !important;
+  cursor: pointer;
+}
+.footer-rights-reserved-text{
+  display:block;
+  padding-top:5px;
+  color:#a9a9a9 !important;
+  font-size:0.8rem;
+  letter-spacing: 1px;
+}
+
 .accordion {
   background-color: rgb(223, 237, 238);
   color: #444;
@@ -403,15 +450,19 @@ footer {
   background-color: white;
   color: var(--lacivert);
 }
-.section-eğitimler {
+
+
+.section-egitimler {
   background-color: #f4fcfd;
-  padding-bottom: 60px;
 }
-.section-eğitimler img {
+.section-egitimler img {
   width: 100%;
   height: 80%;
+  border:2px solid var(--lacivert);
+  box-shadow: rgba(64, 147, 243, 0.25) 0px 13px 27px -5px, rgba(60, 206, 243, 0.3) 0px 8px 16px -8px;
+
 }
-.section-eğitimler h4 {
+.section-egitimler h4 {
   color: #002249;
   font-size: 1.4rem;
   font-weight: 500;
@@ -429,11 +480,37 @@ footer {
   padding-bottom: 55px;
 }
 .section-we {
-  background-image: url(./img/we-banner.jpg);
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
+  position:relative;
 
+}
+.section-we *{
+  color:#fff !important;
+  font-weight: 600 !important;
+}
+.section-we-background{
+  background:url('./img/we-background.jpg');
+  position:absolute;
+  filter:blur(5px);
+  width:100%;
+  height:100%;
+  z-index:-2;
+  filter: blur(1px);
+  
+
+}
+.section-we-background-filter{
+  position:absolute;
+  background-color:var(--lacivert);
+  width:100vw;
+  opacity:0.5;
+  height:100%;
+  height:100%;
+
+  z-index:-1;
+}
+.section-we-content {
+  padding:5rem;
+}
 .horizantal-cards h5 {
   color: #002249;
 }
@@ -531,3 +608,89 @@ footer {
   color: white;
 }
 
+
+/* footer */
+.neden-almalisiniz{
+  position:relative;
+}
+.neden-almalisiniz-background{
+  
+  background: url('./img/neden-sertifica.svg');
+  background-size: cover;
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-repeat:no-repeat;
+  
+  z-index:-2;
+}
+
+
+
+.neden-almalisiniz-background-img img{
+  border:2px solid #fff;
+  border-radius: 5px;
+  width:100%;
+}
+.neden-almalisiniz-background-img * {
+  color:#fff;
+}
+.neden-almalisiniz-background-img a {
+  border-radius: 5px;
+  display:block;
+  width:300px;
+  height: 64px;
+  text-align: center;
+  font-size:1.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  
+}
+.neden-almalisiniz-background-img a:hover{
+  transition:0.5s ease-in-out;
+  border:2px solid transparent;
+  color:var(--lacivert) !important;
+  background-color:#fff !important;
+}
+.neden-almalisiniz-background-img a:hover i {
+  transition:0.5s ease-in-out;
+  color:var(--lacivert);
+}
+
+
+/* online page */
+.online-page-banner
+{
+  height:40vh;
+  padding:25px;
+}
+.online-page-banner img {
+  border-radius: 2%;
+ 
+}
+.online-page-form-content form{
+  padding:5rem;
+}
+
+.online-page-form-content label {
+  font-weight: lighter;
+}
+.online-page-form-content input {
+  border:2px solid var(--blue);
+  border-radius: 1rem;
+  
+}
+.online-page-form-content input:focus{
+  outline:none !important;
+  box-shadow: none !important;
+  
+}
+.online-page-form-content .form-group{
+  margin-bottom:15px;
+}
+.online-page-form-content button {
+  font-weight: lighter;
+  background:var(--lacivert) !important;
+  font-size: 1.3rem;
+  border-radius:2rem;
+}
