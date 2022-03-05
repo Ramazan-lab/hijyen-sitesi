@@ -1,13 +1,9 @@
 /*NAVBAR IMG*/
 @import url("https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
-:root {
-  --open-sans: "Open Sans", sans-serif;
-  --font-arva: font-family: 'Arvo', serif;
+:root{
+  --font-arvo:font-family: 'Arvo', serif;
+  --font-opensans: 'Open Sans', sans-serif;
 }
-* {
-  font-family: var(--open-sans) !important;
-}
-
 .navbar img {
   width: 200px;
   height: 200px;
@@ -455,6 +451,8 @@ footer {
   border-radius: 60px;
 }
 
+/* Admin login css kodları */
+
 .sectionAdminLogin {
   background-image: url(./img/pexels-tranmautritam-285814.jpg);
   height: 100vh;
@@ -465,20 +463,44 @@ footer {
 }
 
 .sectionAdminLogin h1 {
-  font-style: italic;
   color: white;
-  text-decoration: underline;
+  font-weight: lighter;
+  text-align: center;
+}
+.form-admin-login label {
+  color: #eaeaea;
 }
 .sectionAdminLogin button {
   border-radius: 7px;
   border-style: none;
 }
-.sectionAdminLogin input {
+.sectionAdminLogin .customized-form:focus {
+  transition: 0.5s;
+  background: #faebd7;
+  color: #000;
+  border: 2px solid #fff;
+  outline: none;
+}
+.sectionAdminLogin .customized-form {
+  color: #ededed;
+  color: #333;
+  font-weight: 400;
   border-radius: 7px;
   border-style: none;
+  border: 2px solid transparent;
+  box-shadow: none;
 }
 
 .form-admin-login {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius:1rem;
   padding: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;  
+
+}
+.form-admin-login button {
+  font-weight: 600;
+  font-family: var(--font-arvo) !important;
+  font-size:1.2rem;
+
 }
