@@ -79,11 +79,7 @@ router.get("/results", function (req, res, next) {
 });
 //user listeleme
 router.route("/").get((req, res, next) => {
-  res.status(200).json({
-    status: "fail",
-    message: "get all usersss",
-  });
-  next();
+  res.render("home");
 });
 
 module.exports = router;

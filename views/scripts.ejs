@@ -1,0 +1,49 @@
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+  crossorigin="anonymous"
+></script>
+
+<script>
+  const modal = document.querySelector(".modal-custom");
+  const overlay = document.querySelector(".overlay");
+  const btnCloseModal = document.querySelector(".btn--close-modal");
+  const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
+
+  const openModal = function (e) {
+    e.preventDefault();
+    modal.classList.remove("hidden");
+    overlay.classList.remove("hidden");
+  };
+
+  const closeModal = function () {
+    modal.classList.add("hidden");
+    overlay.classList.add("hidden");
+  };
+  btnsOpenModal.forEach((btn) => btn.addEventListener("click", openModal));
+
+  btnCloseModal.addEventListener("click", closeModal);
+  overlay.addEventListener("click", closeModal);
+</script>
+
+<script>
+  const modal2 = document.querySelector(".modal--custom-kayıt");
+  const overlay2 = document.querySelector(".overlay");
+  const btnCloseModal2 = document.querySelector(".btn--close-modal");
+  const btnsOpenModal2 = document.querySelectorAll(".kayıt--show-modal");
+
+  const openModal2 = function (e) {
+    e.preventDefault();
+    modal2.classList.remove("hidden");
+    overlay2.classList.remove("hidden");
+  };
+
+  const closeModal2 = function () {
+    modal2.classList.add("hidden");
+    overlay2.classList.add("hidden");
+  };
+  btnsOpenModal2.forEach((btn) => btn.addEventListener("click", openModal2));
+
+  btnCloseModal2.addEventListener("click", closeModal2);
+  overlay2.addEventListener("click", closeModal2);
+</script>

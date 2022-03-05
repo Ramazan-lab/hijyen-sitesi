@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg navbar-light  ">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/index.html"> <img class="img-fluid" src="/images/Hijyen-Logo.png" >  </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarNavDropdown">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="hijyen-belgesi-page.html">Hijyen Belgesi</a>
+          </li>
+         
+         
+          <li class="nav-item">
+            <a class="nav-link active" href="online-page.html">Online Başvuru</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="sorular-page.html">Sıkça Sorulan Sorular</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="sınavlar-page.html">Sınavlar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="blog-page.html">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="iletişim-page.html">Iletişim</a>
+          </li>
+          <li class="nav-item">
+            <a  style="color: rgb(20, 235, 250);" class="nav-link active btn--show-modal" href="">Giriş yap</a>
+          </li>
+          <li class="nav-item">
+            <a style="color: rgb(20, 235, 250);" class="nav-link active kayıt--show-modal" href="">kayıt Ol</a>
+          </li>
+         
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+    <div class="modal-custom hidden">
+      <button class="btn--close-modal">&times;</button>
+      </h2>
+      <form class="modal__form">
+        <label style="color: white; font-weight: 400;">E-Posta</label>
+        <input type="email" />
+        <label style="color: white; font-weight: 400;">Şifre</label>
+        <input type="text" />
+        <button class="btn-modal">Giriş yap <i class="bi bi-arrow-bar-right"></i></button>
+      </form>
+    </div>
+    <div class="overlay hidden"></div>
+
+
+    <div class="modal--custom-kayıt hidden">
+      <button class="btn--close-modal">&times;</button>
+      </h2>
+      <form action="/users/create" method="POST" class="modal__form">
+        <label style="color: white; font-weight: 400;">Ad Soyad</label>
+        <input name="userName" type="text" required />
+        <label style="color: white; font-weight: 400;">E-Posta</label>
+        <input name="userMail" type="email" required/>
+        <label style="color: white; font-weight: 400;">Telefon numarası</label>
+        <input name="userNumber" type="number" placeholder="(5xx) xxx xx xx" required/>
+        <label style="color: white; font-weight: 400;">Şifre</label>
+        <input name="userPassword" type="text" required/>
+        <button type="submit" class="btn-modal">Kayıt ol <i class="bi bi-arrow-bar-right"></i></button>
+      </form>
+    </div>
+    <div class="overlay hidden"></div>
