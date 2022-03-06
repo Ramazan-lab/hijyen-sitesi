@@ -709,3 +709,7 @@ footer {
 .admincard i{
   font-size: 2.5rem;
 }
+
+.admincard :hover{
+  box-shadow: #002249;
+}
