@@ -1,8 +1,12 @@
 var express = require("express");
 var mysql = require("mysql");
 const uniqid = require("uniqid");
+const bodyParser = require("body-parser");
+const { parse } = require("querystring");
 
 var router = express.Router();
+const urlParser = bodyParser.urlencoded({ extended: false });
+/* 
 var con = mysql.createConnection({
   host: "127.0.0.1",
   user: "root",
@@ -13,14 +17,20 @@ var con = mysql.createConnection({
   password: "root",
   database: "hijyen",
   multipleStatements: true,
+  debug: false,
+}); */
+var pool = mysql.createPool({
+  connectionLimit: 10, // default = 10
+  host: "localhost",
+  user: "root",
+  password: "root",
+  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", //path to mysql sock in MAMP
+  password: "root",
+  database: "hijyen",
+  multipleStatements: true,
+  debug: false,
 });
-con.connect(function (err) {
-  if (!err) {
-    console.log("Database is connected ... nn");
-  } else {
-    console.log(err);
-  }
-});
+
 //sign up - kayıt olma
 router.post("/create", function (req, res, next) {
   try {
@@ -52,20 +62,33 @@ router.post("/login", function (req, res, next) {
   });
 });
 //user test
-router.post("/exam", function (req, res, next) {
-  res.status(200).json({
-    status: "bekliyor...",
-    message: "kullanıcı puanı kayıt edilecek",
+router.post("/basvuru", function (req, res, next) {
+  pool.getConnection(function (err, connection) {
+    let {} = req.body;
+    connection.query(
+      `
+    INSERT INTO onlineBasvurular (id,phone,email,ticari-unvan,adress,website) VALUES ()
+    `,
+      function (err, rows) {
+        connection.release();
+        if (err) throw err;
+        res.render("message/success");
+      }
+    );
   });
 });
 
-router.get("/results2", function (req, res, next) {
-  let sqlSorgusu = "SELECT * FROM users";
-  con.connect(function (err) {
-    con.query(sqlSorgusu, function (err, results, fields) {
-      res.render("home", { data: results });
-      console.log(results);
-    });
+router.post("/", urlParser, function (req, res, next) {
+  pool.getConnection(function (err, connection) {
+    let { email, phone } = req.body;
+    connection.query(
+      `INSERT INTO siziArayalim (email,telefon) VALUES ('${email}', '${phone}')`,
+      function (err, rows) {
+        connection.release();
+        if (err) throw err;
+        res.render("messages/success");
+      }
+    );
   });
 });
 //
