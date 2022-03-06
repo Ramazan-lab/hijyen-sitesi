@@ -6,13 +6,23 @@
 
 <script>
   const modal = document.querySelector(".modal-custom");
+  const modalKayit = document.querySelector(".modal-kayit");
   const overlay = document.querySelector(".overlay");
   const btnCloseModal = document.querySelector(".btn--close-modal");
+  const btnCloseModalKayit = document.querySelector(".btn--close-modal-kayit");
   const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
+  const btnsOpenModalKayit = document.querySelectorAll(
+    ".btn--show-modal-kayit"
+  );
 
   const openModal = function (e) {
     e.preventDefault();
     modal.classList.remove("hidden");
+    overlay.classList.remove("hidden");
+  };
+  const openModalKayit = function (e) {
+    e.preventDefault();
+    modalKayit.classList.remove("hidden");
     overlay.classList.remove("hidden");
   };
 
@@ -20,30 +30,18 @@
     modal.classList.add("hidden");
     overlay.classList.add("hidden");
   };
+
+  const closeModalKayit = function () {
+    modalKayit.classList.add("hidden");
+    overlay.classList.add("hidden");
+  };
+
   btnsOpenModal.forEach((btn) => btn.addEventListener("click", openModal));
+  btnsOpenModalKayit.forEach((btn) =>
+    btn.addEventListener("click", openModalKayit)
+  );
 
   btnCloseModal.addEventListener("click", closeModal);
+  btnCloseModalKayit.addEventListener("click", closeModalKayit);
   overlay.addEventListener("click", closeModal);
-</script>
-
-<script>
-  const modal2 = document.querySelector(".modal--custom-kayıt");
-  const overlay2 = document.querySelector(".overlay");
-  const btnCloseModal2 = document.querySelector(".btn--close-modal");
-  const btnsOpenModal2 = document.querySelectorAll(".kayıt--show-modal");
-
-  const openModal2 = function (e) {
-    e.preventDefault();
-    modal2.classList.remove("hidden");
-    overlay2.classList.remove("hidden");
-  };
-
-  const closeModal2 = function () {
-    modal2.classList.add("hidden");
-    overlay2.classList.add("hidden");
-  };
-  btnsOpenModal2.forEach((btn) => btn.addEventListener("click", openModal2));
-
-  btnCloseModal2.addEventListener("click", closeModal2);
-  overlay2.addEventListener("click", closeModal2);
 </script>

@@ -1,16 +1,5 @@
----TASKS---
+---TASARIM---
 [x] -> admin login paneli - r
-[] -> admin dashboard(anasayfa) - r
-[] -> admin dashboard blog - r
-[] -> rendering HTML Files -> Mainpage - ö
-[] -> rendering HTML Files -> Admin pages- ö
-[] -> rendering HTML Files -> Footer - ö
-[] -> rendering HTML Files -> Header - ö
-[] -> rendering HTML Files -> Sizi arayalım - ö
-[] -> rendering HTML Files -> hijyenbelgesi,onlinebasvur,sss- ö
-[] -> rendering HTML Files -> quiz- ö
-[] -> rendering HTML Files -> blog- ö
-[] -> rendering HTML Files -> iletisim- ö
-[] -> Login 
-[] -> Test & Sending Mail
-[] -> Sign up
+[] -> admin dashboard {istekler, posts, users}
+[] -> 
+[] -> 
