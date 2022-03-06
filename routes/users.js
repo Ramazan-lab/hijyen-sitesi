@@ -6,8 +6,11 @@ var router = express.Router();
 var con = mysql.createConnection({
   host: "127.0.0.1",
   user: "root",
-  //socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", //path to mysql sock in MAMP
-  password: "1234",
+  //for Ramazan
+  // password: "1234",
+  //for Omer
+  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", //path to mysql sock in MAMP
+  password: "root",
   database: "hijyen",
   multipleStatements: true,
 });
