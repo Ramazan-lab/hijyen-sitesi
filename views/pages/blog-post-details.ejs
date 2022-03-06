@@ -3,9 +3,7 @@
   <%- include('../navbar'); %>
   <div style="padding: 0 7vw; margin-top: 60px;" class="container">
     <div class="horizantal-cards">
-        <% data.forEach(function(post){ %>
-            <%- include('blog-post',{post})  %>
-          <% }); %>   
+            <%- include('blog-post-details-card',{data}) %>
 </div>
 </div>
   <%- include('../contact') %>
