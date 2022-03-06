@@ -713,3 +713,24 @@ footer {
 .admincard :hover{
   box-shadow: #002249;
 }
+
+.adminpanelPosts .row{
+  background-color: black;
+  color: white;
+  margin: 5px;
+  padding:5px;
+
+}
+.bi-trash3-fill{
+  color: red;
+}
+
+
+
+.bi-bookmark-plus-fill{
+  color: green;
+}
+
+.adminpanelPosts  button{
+  background-color:transparent ;
+}

@@ -1,10 +1,18 @@
-<script>
-    function openNav() {
-      document.getElementById("mySideBar").style.width = "250px";
-    }
+<%- include("../head")%>
+<body>
+    <%- include("admin-sidebar")%>
 
-    /* Set the width of the side navigation to 0 */
-    function closeNav() {
-      document.getElementById("mySideBar").style.width = "0";
-    }
-  </script>
+
+
+    <script>
+        function openNav() {
+          document.getElementById("mySideBar").style.width = "250px";
+        }
+    
+        /* Set the width of the side navigation to 0 */
+        function closeNav() {
+          document.getElementById("mySideBar").style.width = "0";
+        }
+      </script>
+</body>
+</html>

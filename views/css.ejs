@@ -729,4 +729,53 @@
   background:#fff;
   color:#03cae4;
 }
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+}
+.sidebar .closebtn{
+  background-color: #555;
+}
+
+
+/* Active/current link */
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+.admincard{
+  color: white;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: rgb(88, 88, 88) 0px 5px 15px;
+}
+
+.admincard i{
+  font-size: 2.5rem;
+}
+
+.admincard :hover{
+  box-shadow: #002249;
+}
 </style>

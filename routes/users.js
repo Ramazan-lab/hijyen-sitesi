@@ -23,9 +23,9 @@ var pool = mysql.createPool({
   connectionLimit: 10, // default = 10
   host: "localhost",
   user: "root",
-  password: "root",
-  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", //path to mysql sock in MAMP
-  password: "root",
+ 
+ // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", //path to mysql sock in MAMP
+  password: "1234",
   database: "hijyen",
   multipleStatements: true,
   debug: false,
