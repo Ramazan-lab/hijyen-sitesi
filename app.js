@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const users = require("./routes/users");
+const admin = require("./routes/admin");
 
 const router = express.Router();
 const app = express();
@@ -14,5 +15,6 @@ app.get("/welcome", (req, res) => {
   res.render("welcome"); //template name
 });
 app.use("/", users);
+app.use("/", admin);
 
 module.exports = app;
