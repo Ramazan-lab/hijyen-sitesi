@@ -1,9 +1,13 @@
 var express = require("express");
 var mysql = require("mysql");
 const uniqid = require("uniqid");
+const bodyParser = require("body-parser");
+const { parse } = require("querystring");
 
 var router = express.Router();
-/* var con = mysql.createConnection({
+const urlParser = bodyParser.urlencoded({ extended: false });
+/* 
+var con = mysql.createConnection({
   host: "127.0.0.1",
   user: "root",
   //for Ramazan
@@ -13,14 +17,20 @@ var router = express.Router();
   password: "root",
   database: "hijyen",
   multipleStatements: true,
-});
-con.connect(function (err) {
-  if (!err) {
-    console.log("Database is connected ... nn");
-  } else {
-    console.log(err);
-  }
+  debug: false,
 }); */
+var pool = mysql.createPool({
+  connectionLimit: 10, // default = 10
+  host: "localhost",
+  user: "root",
+  password: "root",
+  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", //path to mysql sock in MAMP
+  password: "root",
+  database: "hijyen",
+  multipleStatements: true,
+  debug: false,
+});
+
 //sign up - kayıt olma
 router.post("/create", function (req, res, next) {
   try {
@@ -52,20 +62,31 @@ router.post("/login", function (req, res, next) {
   });
 });
 //user test
-router.post("/exam", function (req, res, next) {
-  res.status(200).json({
-    status: "bekliyor...",
-    message: "kullanıcı puanı kayıt edilecek",
+router.post("/basvuru", urlParser, function (req, res, next) {
+  pool.getConnection(function (err, connection) {
+    let { phone, email, ticariunvan, adress, website } = req.body;
+    connection.query(
+      `INSERT INTO onlineBasvurular (id,phone,email,ticariunvan,adress,website) VALUES ('${uniqid()}','${phone}','${email}','${ticariunvan}','${adress}','${website}')`,
+      function (err, rows) {
+        connection.release();
+        if (err) throw err;
+        res.render("messages/success");
+      }
+    );
   });
 });
 
-router.get("/results2", function (req, res, next) {
-  let sqlSorgusu = "SELECT * FROM users";
-  con.connect(function (err) {
-    con.query(sqlSorgusu, function (err, results, fields) {
-      res.render("home", { data: results });
-      console.log(results);
-    });
+router.post("/", urlParser, function (req, res, next) {
+  pool.getConnection(function (err, connection) {
+    let { email, phone } = req.body;
+    connection.query(
+      `INSERT INTO siziArayalim (email,telefon) VALUES ('${email}', '${phone}')`,
+      function (err, rows) {
+        connection.release();
+        if (err) throw err;
+        res.render("messages/success");
+      }
+    );
   });
 });
 //
@@ -84,50 +105,28 @@ router.get("/iletisim", function (req, res, next) {
 router.get("/basvuru", function (req, res, next) {
   res.render("pages/basvuru");
 });
-api = [
-  {
-    postId: 1,
-    postTitle: "HİJYEN BELGESİ NEDİR ? KİMLER ALMALI ?",
-    postImage: "/images/blog1.jpg",
-    postText:
-      "HİJYEN BELGESİ NEDİR ?   Hijyen belgesi nedir, nereden alınır? Sorusu hala aktüelliğini koruyor. Bu yazımızda hijyen sertifikası nedir, nereden alınır sorularını cevaplayacağız. Hijyen belgesi, insanların sağlığına zarar verecek ortamlarda alınan tedbirleri uygulamalı olarak gösteren hijyen eğitimi sonrası verilen belgedir. Hijyen sertifikası, ilgili bakanlık tarafından yayınlanan hijyen eğitimi yönetmeliğine göre zorunludur. Hijyen belgesi almak için 0552 479 94 53 numaralı telefondan.",
-    postLongText:
-      "Hijyen belgesi eğitiminde işlenecek konular;   Hastalıklar neden olan mikrop ve virüslerin özellikleri Ne şekilde bulaştıkları Hastalıklara yakalanma riskini azaltma önlemleri İşyeri sahiplerine uygulanan yasa Çalışanlara yönelik yasa Mikrop tanımı Mikrop çeşitleri Mikropların bulaşma yolları Hastalıkların Kaynakları Hastalıkların bulaşma yolları Enfeksiyon zinciri Sık görülen hastalıklar\n \n   Hijyen belgesi eğitimi, eğitim.Hijyen belgesi eğitiminde işlenecek konular;   Hastalıklar neden olan mikrop ve virüslerin özellikleri Ne şekilde bulaştıkları Hastalıklara yakalanma riskini azaltma önlemleri İşyeri sahiplerine uygulanan yasa Çalışanlara yönelik yasa Mikrop tanımı Mikrop çeşitleri Mikropların bulaşma yolları Hastalıkların Kaynakları Hastalıkların bulaşma yolları Enfeksiyon zinciri Sık görülen hastalıklar   Hijyen belgesi eğitimi, eğitim.Hijyen belgesi eğitiminde işlenecek konular;   Hastalıklar neden olan mikrop ve virüslerin özellikleri Ne şekilde bulaştıkları Hastalıklara yakalanma riskini azaltma önlemleri İşyeri sahiplerine uygulanan yasa Çalışanlara yönelik yasa Mikrop tanımı Mikrop çeşitleri Mikropların bulaşma yolları Hastalıkların Kaynakları Hastalıkların bulaşma yolları Enfeksiyon zinciri Sı",
-  },
-  {
-    postId: 2,
-    postTitle: "HİJYEN EĞİTİM İÇERİĞİNDE NELER VAR ?",
-    postImage: "/images/blog2.jpg",
-    postText:
-      "Hijyen belgesi eğitiminde işlenecek konular;   Hastalıklar neden olan mikrop ve virüslerin özellikleri Ne şekilde bulaştıkları Hastalıklara yakalanma riskini azaltma önlemleri İşyeri sahiplerine uygulanan yasa Çalışanlara yönelik yasa Mikrop tanımı Mikrop çeşitleri Mikropların bulaşma yolları Hastalıkların Kaynakları Hastalıkların bulaşma yolları Enfeksiyon zinciri Sık görülen hastalıklar",
-    postLongText:
-      "Hijyen belgesi eğitiminde işlenecek konular;   Hastalıklar neden olan mikrop ve virüslerin özellikleri Ne şekilde bulaştıkları Hastalıklara yakalanma riskini azaltma önlemleri İşyeri sahiplerine uygulanan yasa Çalışanlara yönelik yasa Mikrop tanımı Mikrop çeşitleri Mikropların bulaşma yolları Hastalıkların Kaynakları Hastalıkların bulaşma yolları Enfeksiyon zinciri Sık görülen hastalıklar\n \n   Hijyen belgesi eğitimi, eğitim.Hijyen belgesi eğitiminde işlenecek konular;   Hastalıklar neden olan mikrop ve virüslerin özellikleri Ne şekilde bulaştıkları Hastalıklara yakalanma riskini azaltma önlemleri İşyeri sahiplerine uygulanan yasa Çalışanlara yönelik yasa Mikrop tanımı Mikrop çeşitleri Mikropların bulaşma yolları Hastalıkların Kaynakları Hastalıkların bulaşma yolları Enfeksiyon zinciri Sık görülen hastalıklar   Hijyen belgesi eğitimi, eğitim.Hijyen belgesi eğitiminde işlenecek konular;   Hastalıklar neden olan mikrop ve virüslerin özellikleri Ne şekilde bulaştıkları Hastalıklara yakalanma riskini azaltma önlemleri İşyeri sahiplerine uygulanan yasa Çalışanlara yönelik yasa Mikrop tanımı Mikrop çeşitleri Mikropların bulaşma yolları Hastalıkların Kaynakları Hastalıkların bulaşma yolları Enfeksiyon zinciri Sık görülen hastalıklar   Hijyen belgesi eğitimi, eğitim.",
-  },
-  {
-    postId: 3,
-    postTitle: "HİJYEN EĞİTİMİ NEDİR? NASIL OLMALIDIR?",
-    postImage: "/images/blog3.jpg",
-    postText:
-      "Hijyen kelime anlamıyla, temiz, sağlıklı yaşam için alınan önlem ve uygulanan faaliyetlerin tamamıdır. Ayrıca ilgili bakanlık tarafından Resmi Gazete’de yayınlanan Hijyen Eğitimi Yönetmeliğine göre çalışan personelin, kendi ve halk sağlığını koruyacak şekilde hizmet vermeyi sağlamak için yapılan uygulamaların ve alınan temizlik önlemlerinin tamamıdır.",
-    postLongText:
-      "Hijyen kelime anlamıyla, temiz, sağlıklı yaşam için alınan önlem ve uygulanan faaliyetlerin tamamıdır. Ayrıca ilgili bakanlık tarafından Resmi Gazete’de yayınlanan Hijyen Eğitimi Yönetmeliğine göre çalışan personelin, kendi ve halk sağlığını koruyacak şekilde hizmet vermeyi sağlamak için yapılan uygulamaların ve alınan temizlik önlemlerinin tamamıdır. İlgili yönetmeliğe göre, başta yemekhaneler, restoranlar ve diğer benzeri gıda.Hijyen kelime anlamıyla, temiz, sağlıklı yaşam için alınan önlem ve uygulanan faaliyetlerin tamamıdır. Ayrıca ilgili bakanlık tarafından Resmi Gazete’de yayınlanan Hijyen Eğitimi Yönetmeliğine göre çalışan personelin, kendi ve halk sağlığını koruyacak şekilde hizmet vermeyi sağlamak için yapılan uygulamaların ve alınan temizlik önlemlerinin tamamıdır. İlgili yönetmeliğe göre, başta yemekhaneler, restoranlar ve diğer benzeri gıda.Hijyen kelime anlamıyla, temiz, sağlıklı yaşam için alınan önlem ve uygulanan faaliyetlerin tamamıdır. Ayrıca ilgili bakanlık tarafından Resmi Gazete’de yayınlanan Hijyen Eğitimi Yönetmeliğine göre çalışan personelin, kendi ve halk sağlığını koruyacak şekilde hizmet vermeyi sağlamak için yapılan uygulamaların ve alınan temizlik önlemlerinin tamamıdır. İlgili yönetmeliğe göre, başta yemekhaneler, restoranlar ve diğer benzeri gıda.",
-  },
-  {
-    postId: 4,
-    postTitle: "HİJYEN BELGESİ HANGİ İŞLETMELER İÇİN ZORUNLUDUR?",
-    postImage: "/images/blog4.jpeg",
-    postText:
-      "Her şeyin başı sağlık, sağlık olsun gibi sözleri gündelik hayatımızda o kadar çok duyarız ki kendimiz de bir o kadar kullanırız. Çünkü gerçekten bu hayattaki belki de en önemli varlığımızdır. İnsanlar gençken varlık (mal- para) için sağlığını feda edercesine çalışır, sağlığını kaybedince ise tüm varlığını harcamaktan çekinmezmiş. Gerçekten de.",
-    postLongText:
-      "Her şeyin başı sağlık, sağlık olsun gibi sözleri gündelik hayatımızda o kadar çok duyarız ki kendimiz de bir o kadar kullanırız. Çünkü gerçekten bu hayattaki belki de en önemli varlığımızdır. İnsanlar gençken varlık (mal- para) için sağlığını feda edercesine çalışır, sağlığını kaybedince ise tüm varlığını harcamaktan çekinmezmiş. Gerçekten de.Her şeyin başı sağlık, sağlık olsun gibi sözleri gündelik hayatımızda o kadar çok duyarız ki kendimiz de bir o kadar kullanırız. Çünkü gerçekten bu hayattaki belki de en önemli varlığımızdır. İnsanlar gençken varlık (mal- para) için sağlığını feda edercesine çalışır, sağlığını kaybedince ise tüm varlığını harcamaktan çekinmezmiş. Gerçekten de.Her şeyin başı sağlık, sağlık olsun gibi sözleri gündelik hayatımızda o kadar çok duyarız ki kendimiz de bir o kadar kullanırız. Çünkü gerçekten bu hayattaki belki de en önemli varlığımızdır. İnsanlar gençken varlık (mal- para) için sağlığını feda edercesine çalışır, sağlığını kaybedince ise tüm varlığını harcamaktan çekinmezmiş. Gerçekten de.",
-  },
-];
-router.get("/post-id/:postid", function (req, res) {
-  let currData = api.find((post) => post.postId == req.params.postid);
-  res.render("pages/blog-post-details", { data: currData });
+
+router.get("/post-id/:postid", urlParser, function (req, res) {
+  pool.getConnection(function (err, connection) {
+    connection.query(`SELECT * FROM blogPosts`, function (err, rows) {
+      connection.release();
+      if (err) throw err;
+      let results = Object.values(JSON.parse(JSON.stringify(rows)));
+      let post = results.find((el) => req.params.postid == el.id);
+      console.log(post);
+      res.render("pages/blog-post-details", { data: post });
+    });
+  });
 });
 router.get("/blog", function (req, res) {
-  res.render("pages/blog", { data: api });
+  pool.getConnection(function (err, connection) {
+    connection.query(`SELECT * FROM blogPosts`, function (err, rows) {
+      connection.release();
+      if (err) throw err;
+      const results = Object.values(JSON.parse(JSON.stringify(rows)));
+      res.render("pages/blog", { data: results });
+    });
+  });
 });
 router.get("/sinav", function (req, res, next) {
   res.render("pages/sinav");
