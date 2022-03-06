@@ -3,7 +3,7 @@ var mysql = require("mysql");
 const uniqid = require("uniqid");
 
 var router = express.Router();
-/* var con = mysql.createConnection({
+var con = mysql.createConnection({
   host: "127.0.0.1",
   user: "root",
   //for Ramazan
@@ -20,7 +20,7 @@ con.connect(function (err) {
   } else {
     console.log(err);
   }
-}); */
+});
 //sign up - kayıt olma
 router.post("/create", function (req, res, next) {
   try {
