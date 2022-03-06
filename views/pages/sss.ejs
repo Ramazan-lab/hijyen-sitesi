@@ -76,6 +76,23 @@ d) Komisyon tarafından hijyen eğitimi verilmesi uygun görülen diğer iş kol
 <%- include('../contact') %>
 
   <%- include('../footer'); %>
+  <script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("activeA");
+        var panel2 = this.nextElementSibling;
+        if (panel2.style.display === "block") {
+          panel2.style.display = "none";
+        } else {
+          panel2.style.display = "block";
+        }
+      });
+    }
+    </script>
+  
   <%- include('../scripts') %>
 </body>
 </html>

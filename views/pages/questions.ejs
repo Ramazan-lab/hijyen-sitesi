@@ -1,0 +1,275 @@
+<%- include('../head'); %>
+<body>
+  <%- include('../navbar'); %>
+  <div style=" padding: 3vw; " class="container quiz-container" id="quiz">
+    <div class="row">
+      <div class="col-12">
+      <div class="quiz-header">
+        <h2 id="question">Question Text</h2>
+        <ul>
+          <li>
+            <input type="radio" name="answer" id="a" class="answer">
+            <label for="a" id="a_text">Answer</label>
+          </li>
+  
+          <li>
+            <input type="radio" name="answer" id="b" class="answer">
+            <label for="b" id="b_text">Answer</label>
+          </li>
+  
+          <li>
+            <input type="radio" name="answer" id="c" class="answer">
+            <label for="c" id="c_text">Answer</label>
+          </li>
+  
+          <li>
+            <input type="radio" name="answer" id="d" class="answer">
+            <label for="d" id="d_text">Answer</label>
+          </li>
+  
+        </ul>
+      </div>
+  
+      <button style="width: 100%;" id="submit">Gönder</button>
+    </div>
+    </div>
+    
+    </div>
+
+
+    <script>
+      const quizData = [
+      {
+          question: "Hijyen eğitimi hangi yönetmelik gereği verilmiştir?",
+          a: "Hijyen yönetmeliği.",
+          b: "İlk yardım yönetmeliği.",
+          c: "Gıda yönetmeliği.",
+          d: "İş sağlığı yönetmeliği.",
+          correct: "a",
+      },
+      {
+          question: "Kişisel Hijyen tanımı için hangisi doğrudur?",
+          a: "Bireyin sağlığını sürdürmek için yaptığı “ÖZBAKIM’’ uygulamalarını içerir.",
+          b: "Bireyin refahı için hijyenik ortamların sağlanmasını içerir.",
+          c: "Gıdaların saklanma koşullarını içerir.",
+          d: "Hastanelerin hijyenik ortamlarını içerir.",
+          correct: "b",
+      },
+      {
+          question: "Gıda hijyeni ne demektir?",
+          a: "Gıda maddelerinin yararlı mikroorganizmalardan arındırılarak depolanması ve servise sunulmasıdır.",
+          b: "Çalışma ortamının temiz tutulmasıdır.",
+          c: " Gıda maddelerinin zararlı mikroorganizmalardan arındırılarak, sağlıklı ve temiz bir şekilde hazırlanması, depolanması ve servise sunulmasıdır.",
+          d: "Sağlıklı üretim demektir.",
+          correct: "c",
+      },
+      {
+          question: "Mikroorganizmalar nerede bulunmaz?",
+          a: "İyi yıkanmamış sebze ve meyvelerde.",
+          b: "İnsan ve hayvanların dışkılarında.",
+          c: "Hayvanlarda.",
+          d: "Steril ortamlarda.",
+          correct: "d",
+      },
+      {
+          question: "Hangisinden sonra el yıkama işlemine gerek yoktur?",
+          a: "Çöp ve atıklara dokunulduğunda.",
+          b: " Televizyon izledikten sonra.",
+          c: "Tuvalet gereksiniminin giderilmesinden sonra.",
+          d: "Kimyasallarla, elleri kirleten işlerle, boyalarla uğraşıldığında.",
+          correct: "b",
+      },
+      {
+          question: "Hijyen ile ilgili tanımlar arasında yer almaz?",
+          a: "Dezenfektan.",
+          b: "Temizlik.",
+          c: " Hijyen.",
+          d: "Aşı yapma..",
+          correct: "d",
+      },
+      {
+          question: "Aşağıdakilerden hangisi düşük risk taşıyan gıdalar grubundandır?",
+          a: "Dondurma.",
+          b: "Soğuk et yemekleri.",
+          c: "Turşu.",
+          d: "Çiğ deniz ürünleri.",
+          correct: "c",
+      },
+      {
+          question: "Bakteriler çoğalabilmek için hangisine ihtiyaç duyar? ",
+          a: "Yeterli zaman.",
+          b: "Uygun sıcaklık.",
+          c: "Gıda ve su.",
+          d: "Hepsi",
+          correct: "d",
+      },
+      {
+          question: "Aşağıdakilerden hangisi kişisel hijyeni sağlamada dikkat edilmesi gereken noktalardan değildir?",
+          a: "Besinlerle uğraşırken ağız, burun ile uğraşılmamalıdır.",
+          b: "Elleri temizlemeye gerek yoktur.",
+          c: "Dişler bakımlı olmalı günde 2 kez fırçalanmalıdır.",
+          d: "Öksürme ve hapşırma sırasında mutlaka mendil kullanılmalıdır.",
+          correct: "b",
+      },
+      {
+          question: "Halk sağlığı açısından risk oluşturan etkenler arasında gösterilemez?",
+          a: "Bakteri",
+          b: "Virüs",
+          c: "Temizlik",
+          d: "Mantar",
+          correct: "c",
+      },
+      {
+          question: " Aşağıdakilerden hangisi corona virüs belirtilerinden değildir?",
+          a: "Öksürük.",
+          b: "Ateş.",
+          c: "Açık yaraları bantla kapatmalıyız.",
+          d: "Miğde bulantısı",
+          correct: "d",
+      },
+      {
+          question: "Aids den korunma yollarından değildir?",
+          a: "HIV taşıyıcısı ise kan bağışlamamalı.",
+          b: "Dezenfekte edilmemiş iğne, şırınga kullanılmamalıdır.",
+          c: "Tıraş bıçaklarını, küpe gibi kişisel eşyaları ortaklaşa kullanmalıyız.",
+          d: "Açık yaraları bantla kapatmalıyız.",
+          correct: "d",
+      },
+      {
+          question: "Bağışıklık kaça ayrılır bunlar nelerdir?",
+          a: "2 ye ayrılır doğal bağışıklık ve sonradan kazanılan bağışıklık.",
+          b: "2 ye ayrılır pasif bağışıklık ve aktif bağışıklık.",
+          c: "2 ye ayrılır özgün bağışıklık ve pasif bağışıklık.",
+          d: "2 ye ayrılır doğal bağışıklık ve aktif bağışıklık.",
+          correct: "a",
+      },
+      {
+          question: "Enfeksiyon hastalıklarının bulaşma yollarından biri değildir?",
+          a: "Hava, su ve besinlerle.",
+          b: "Vektörler ve zoonozlarla.",
+          c: "Dezenfektanla.",
+          d: "Parazitlerle.",
+          correct: "c",
+      },
+      {
+          question: "Vektörlerle bulaşan hastalıklar hangi hayvanlardan kaynaklanmaz?",
+          a: "Sivrisinekler",
+          b: "Bitler",
+          c: "Keneler",
+          d: "Kediler",
+          correct: "d",
+      },
+      {
+          question: "Parazitlerin insan vücuduna giriş yolu için hangisi yanlıştır? ",
+          a: "Sindirim yolu ile.",
+          b: "Solunum yolu ile.",
+          c: "Plasenta ile.",
+          d: "Damlacık ile.",
+          correct: "d",
+      },
+      {
+          question: "Fiziksel, kimyasal, biyolojik kirlenme neye aittir?",
+          a: "Besinlerin kirlenmesi.",
+          b: "Ellerin kirlenmesi.",
+          c: "Kulakların kirlenmesi.",
+          d: "Ayakların kirlenmesi.",
+          correct: "a",
+      },
+      
+      {
+          question: "Patojen bakterilerin en iyi çoğalabildikleri sıcaklık aralığı hangisidir? ",
+          a: "5- 15",
+          b: "6- 16",
+          c: "5- 65",
+          d: "6- 56",
+          correct: "c",
+      },
+      {
+          question: "Çapraz bulaşmaya neden olan besin dışı etmenler arasında gösterilemez?",
+          a: "Eller.",
+          b: "Kesme tahtaları..",
+          c: "Bezler süngerler.",
+          d: "Mantarlar.",
+          correct: "d",
+      },
+      {
+          question: "Çapraz bulaşmaya neden olan besin dışı etmenler arasında gösterilemez?",
+          a: "Eller.",
+          b: "Kesme tahtaları.",
+          c: "Bezler süngerler.",
+          d: "Mantarlar.",
+          correct: "d",
+      },
+      
+  
+  ];
+  
+  const quiz= document.getElementById('quiz')
+  const answerEls = document.querySelectorAll('.answer')
+  const questionEl = document.getElementById('question')
+  const a_text = document.getElementById('a_text')
+  const b_text = document.getElementById('b_text')
+  const c_text = document.getElementById('c_text')
+  const d_text = document.getElementById('d_text')
+  const submitBtn = document.getElementById('submit')
+  
+  
+  let currentQuiz = 0
+  let score = 0
+  
+  loadQuiz()
+  
+  function loadQuiz() {
+  
+      deselectAnswers()
+  
+      const currentQuizData = quizData[currentQuiz]
+  
+      questionEl.innerText = currentQuizData.question
+      a_text.innerText = currentQuizData.a
+      b_text.innerText = currentQuizData.b
+      c_text.innerText = currentQuizData.c
+      d_text.innerText = currentQuizData.d
+  }
+  
+  function deselectAnswers() {
+      answerEls.forEach(answerEl => answerEl.checked = false)
+  }
+  
+  function getSelected() {
+      let answer
+      answerEls.forEach(answerEl => {
+          if(answerEl.checked) {
+              answer = answerEl.id
+          }
+      })
+      return answer
+  }
+  
+  
+  submitBtn.addEventListener('click', () => {
+      const answer = getSelected()
+      if(answer) {
+         if(answer === quizData[currentQuiz].correct) {
+             score++
+         }
+  
+         currentQuiz++
+  
+         if(currentQuiz < quizData.length) {
+             loadQuiz()
+         } else {
+             quiz.innerHTML = `
+             <h2>You answered ${score}/${quizData.length} questions correctly</h2>
+  
+             <button onclick="location.reload()">Reload</button>
+             `
+         }
+      }
+  })
+  </script>
+  
+  <%- include('../footer'); %>
+  <%- include('../scripts') %>
+</body>
+</html>

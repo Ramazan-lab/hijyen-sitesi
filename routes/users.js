@@ -22,7 +22,7 @@ con.connect(function (err) {
   }
 }); */
 //sign up - kayıt olma
-/* router.post("/create", function (req, res, next) {
+router.post("/create", function (req, res, next) {
   try {
     console.log(req.body);
     con.connect(function (err) {
@@ -43,7 +43,7 @@ con.connect(function (err) {
       message: err,
     });
   }
-}); */
+});
 //login - giriş yapma
 router.post("/login", function (req, res, next) {
   res.status(200).json({
@@ -69,6 +69,9 @@ router.get("/results2", function (req, res, next) {
   });
 });
 //
+router.get("/sinav/questions", function (req, res, next) {
+  res.render("pages/questions");
+});
 router.get("/hijyen-belgesi", function (req, res, next) {
   res.render("pages/hijyen-belgesi");
 });
