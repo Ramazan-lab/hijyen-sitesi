@@ -69,6 +69,9 @@ router.get("/results2", function (req, res, next) {
   });
 });
 //
+/* 
+GETTING PAGES
+*/
 router.get("/sinav/questions", function (req, res, next) {
   res.render("pages/questions");
 });
@@ -81,8 +84,34 @@ router.get("/iletisim", function (req, res, next) {
 router.get("/basvuru", function (req, res, next) {
   res.render("pages/basvuru");
 });
-router.get("/blog", function (req, res, next) {
-  res.render("pages/blog");
+api = [
+  {
+    postTitle: "HİJYEN BELGESİ NEDİR ? KİMLER ALMALI ?",
+    postImage: "/images/blog1.jpg",
+    postText:
+      "HİJYEN BELGESİ NEDİR ?   Hijyen belgesi nedir, nereden alınır? Sorusu hala aktüelliğini koruyor. Bu yazımızda hijyen sertifikası nedir, nereden alınır sorularını cevaplayacağız. Hijyen belgesi, insanların sağlığına zarar verecek ortamlarda alınan tedbirleri uygulamalı olarak gösteren hijyen eğitimi sonrası verilen belgedir. Hijyen sertifikası, ilgili bakanlık tarafından yayınlanan hijyen eğitimi yönetmeliğine göre zorunludur. Hijyen belgesi almak için 0552 479 94 53 numaralı telefondan.",
+  },
+  {
+    postTitle: "HİJYEN EĞİTİM İÇERİĞİNDE NELER VAR ?",
+    postImage: "/images/blog2.jpg",
+    postText:
+      "Hijyen belgesi eğitiminde işlenecek konular;   Hastalıklar neden olan mikrop ve virüslerin özellikleri Ne şekilde bulaştıkları Hastalıklara yakalanma riskini azaltma önlemleri İşyeri sahiplerine uygulanan yasa Çalışanlara yönelik yasa Mikrop tanımı Mikrop çeşitleri Mikropların bulaşma yolları Hastalıkların Kaynakları Hastalıkların bulaşma yolları Enfeksiyon zinciri Sık görülen hastalıklar   Hijyen belgesi eğitimi, eğitim.",
+  },
+  {
+    postTitle: "HİJYEN EĞİTİMİ NEDİR? NASIL OLMALIDIR?",
+    postImage: "/images/blog3.jpg",
+    postText:
+      "Hijyen kelime anlamıyla, temiz, sağlıklı yaşam için alınan önlem ve uygulanan faaliyetlerin tamamıdır. Ayrıca ilgili bakanlık tarafından Resmi Gazete’de yayınlanan Hijyen Eğitimi Yönetmeliğine göre çalışan personelin, kendi ve halk sağlığını koruyacak şekilde hizmet vermeyi sağlamak için yapılan uygulamaların ve alınan temizlik önlemlerinin tamamıdır. İlgili yönetmeliğe göre, başta yemekhaneler, restoranlar ve diğer benzeri gıda.",
+  },
+  {
+    postTitle: "HİJYEN BELGESİ HANGİ İŞLETMELER İÇİN ZORUNLUDUR?",
+    postImage: "/images/blog4.jpeg",
+    postText:
+      "Her şeyin başı sağlık, sağlık olsun gibi sözleri gündelik hayatımızda o kadar çok duyarız ki kendimiz de bir o kadar kullanırız. Çünkü gerçekten bu hayattaki belki de en önemli varlığımızdır. İnsanlar gençken varlık (mal- para) için sağlığını feda edercesine çalışır, sağlığını kaybedince ise tüm varlığını harcamaktan çekinmezmiş. Gerçekten de.",
+  },
+];
+router.get("/blog", function (req, res) {
+  res.render("pages/blog", { data: api });
 });
 router.get("/sinav", function (req, res, next) {
   res.render("pages/sinav");
