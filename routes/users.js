@@ -13,14 +13,14 @@ var router = express.Router();
   password: "root",
   database: "hijyen",
   multipleStatements: true,
-}); */
+});
 con.connect(function (err) {
   if (!err) {
     console.log("Database is connected ... nn");
   } else {
     console.log(err);
   }
-});
+}); */
 //sign up - kayıt olma
 /* router.post("/create", function (req, res, next) {
   try {
