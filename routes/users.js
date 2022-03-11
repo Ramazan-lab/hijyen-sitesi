@@ -6,19 +6,7 @@ const { parse } = require("querystring");
 
 var router = express.Router();
 const urlParser = bodyParser.urlencoded({ extended: false });
-/* 
-var con = mysql.createConnection({
-  host: "127.0.0.1",
-  user: "root",
-  //for Ramazan
-  // password: "1234",
-  //for Omer
-  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", //path to mysql sock in MAMP
-  password: "root",
-  database: "hijyen",
-  multipleStatements: true,
-  debug: false,
-}); */
+
 var pool = mysql.createPool({
   connectionLimit: 10, // default = 10
   host: "localhost",
@@ -75,7 +63,6 @@ router.post("/basvuru", urlParser, function (req, res, next) {
     );
   });
 });
-
 router.post("/", urlParser, function (req, res, next) {
   pool.getConnection(function (err, connection) {
     let { email, phone } = req.body;
@@ -89,10 +76,6 @@ router.post("/", urlParser, function (req, res, next) {
     );
   });
 });
-//
-/* 
-GETTING PAGES
-*/
 router.get("/sinav/questions", function (req, res, next) {
   res.render("pages/questions");
 });
@@ -105,7 +88,6 @@ router.get("/iletisim", function (req, res, next) {
 router.get("/basvuru", function (req, res, next) {
   res.render("pages/basvuru");
 });
-
 router.get("/post-id/:postid", urlParser, function (req, res) {
   pool.getConnection(function (err, connection) {
     connection.query(`SELECT * FROM blogPosts`, function (err, rows) {
@@ -138,5 +120,4 @@ router.get("/sss", function (req, res, next) {
 router.route("/").get((req, res, next) => {
   res.render("home");
 });
-
 module.exports = router;
