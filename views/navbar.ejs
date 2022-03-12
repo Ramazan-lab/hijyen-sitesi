@@ -36,7 +36,17 @@
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="/iletisim">Iletişim</a>
-        </li>
+        </li>         
+        <% if (user) {%>
+          <li class="nav-item">
+            <a
+              style="margin:0; padding:6px; vertical-align:center; width:110px; vertical-align:center; border-radius:8px"
+              class="nav-link text-danger active text-center"
+              href="/logout"
+              > <i class="bi bi-person"></i><small>Çıkış Yap</small></a
+            >
+          </li>
+      <%} else { %>
         <li class="nav-item">
           <a
             style="color: rgb(20, 235, 250)"
@@ -53,6 +63,7 @@
             >Kayıt Ol</a
           >
         </li>
+      <%}%>
       </ul>
     </div>
   </div>
@@ -67,16 +78,17 @@
   >
     Akademiye Giriş Yap
   </h4>
-
-  <form class="modal__form">
+  
+    <form action="/users/login" method="POST" class="modal__form">
     <label for="email">E-Posta</label>
-    <input type="email" id="email" maxlength="20" />
+    <input type="email" name="email" id="email" maxlength="20" />
     <label>Şifre</label>
-    <input type="password" maxlength="8" />
+    <input type="password" name="password" maxlength="8" />
     <button class="btn-modal px-5 py-2">
       Giriş yap <i class="bi bi-arrow-bar-right"></i>
     </button>
   </form>
+ 
 </div>
 <div class="overlay hidden"></div>
 
@@ -105,5 +117,8 @@
       Kayıt ol <i class="bi bi-arrow-bar-right"></i>
     </button>
   </form>
+
+
 </div>
 <div class="overlay hidden"></div>
+
