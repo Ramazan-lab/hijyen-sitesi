@@ -8,22 +8,22 @@
         <h2 id="question">Question Text</h2>
         <ul>
           <li>
-            <input type="radio" name="answer" id="a" class="answer">
+            <input value="1" type="radio" name="answer" id="a" class="answer">
             <label for="a" id="a_text">Answer</label>
           </li>
   
           <li>
-            <input type="radio" name="answer" id="b" class="answer">
-            <label for="b" id="b_text">Answer</label>
+            <input value="2" type="radio" name="answer" id="b" class="answer">
+            <label  for="b" id="b_text">Answer</label>
           </li>
   
           <li>
-            <input type="radio" name="answer" id="c" class="answer">
+            <input value="3" type="radio" name="answer" id="c" class="answer">
             <label for="c" id="c_text">Answer</label>
           </li>
   
           <li>
-            <input type="radio" name="answer" id="d" class="answer">
+            <input value="4" type="radio" name="answer" id="d" class="answer">
             <label for="d" id="d_text">Answer</label>
           </li>
   
@@ -39,7 +39,7 @@
 
     <script>
       const quizData = [
-      {
+     /*  {
           question: "Hijyen eğitimi hangi yönetmelik gereği verilmiştir?",
           a: "Hijyen yönetmeliği.",
           b: "İlk yardım yönetmeliği.",
@@ -183,7 +183,7 @@
           c: "5- 65",
           d: "6- 56",
           correct: "c",
-      },
+      }, */
       {
           question: "Çapraz bulaşmaya neden olan besin dışı etmenler arasında gösterilemez?",
           a: "Eller.",
@@ -213,7 +213,8 @@
   const d_text = document.getElementById('d_text')
   const submitBtn = document.getElementById('submit')
   
-  
+  const answerList=[];
+
   let currentQuiz = 0
   let score = 0
   
@@ -237,18 +238,20 @@
   }
   
   function getSelected() {
-      let answer
+      let answer;
+     
       answerEls.forEach(answerEl => {
           if(answerEl.checked) {
-              answer = answerEl.id
+              answer = answerEl.id;
+             answerList.push(answerEl.value);
           }
       })
-      return answer
+      return answer;
   }
   
-  
+
   submitBtn.addEventListener('click', () => {
-      const answer = getSelected()
+      const answer = getSelected();
       if(answer) {
          if(answer === quizData[currentQuiz].correct) {
              score++
@@ -259,10 +262,13 @@
          if(currentQuiz < quizData.length) {
              loadQuiz()
          } else {
+             console.log(answerList);
+             let result=answerList.join('');
+             console.log(answerList);
              quiz.innerHTML = `
-             <h2>You answered ${score}/${quizData.length} questions correctly</h2>
+             <h2>Sınavınız Bitmiştir.</h2>
   
-             <button onclick="location.reload()">Reload</button>
+             <a href="/sinav-sonuc/${result}">Soruları Gönder</a>
              `
          }
       }

@@ -50,7 +50,7 @@ var pool = mysql.createPool({
   multipleStatements: true,
   debug: false,
 });
-//middlewares
+
 const getUser = async (req) => {
   if (req.cookies.jwt) {
     return new Promise((resolve) => {
@@ -70,8 +70,24 @@ const getUser = async (req) => {
     });
   }
 };
+const getData = async (req, query) => {
+  if (req.cookies.jwt) {
+    return new Promise((resolve) => {
+      pool.getConnection(function (err, connection) {
+        connection.query(query, function (err, rows) {
+          connection.release();
+          if (err) throw err;
+          let data = Object.values(JSON.parse(JSON.stringify(rows)));
+          resolve(data);
+        });
+      });
+    });
+  }
+};
+//middlewares
 //sign up - kayıt olma
-router.use("/users/create", async function (req, res, next) {
+router.use("/users/create", urlParser, async function (req, res, next) {
+  console.log(req.body);
   try {
     req.body.userPassword = await bcrypt.hash(req.body.userPassword, 12);
     next();
@@ -80,14 +96,13 @@ router.use("/users/create", async function (req, res, next) {
     next();
   }
 });
-router.post("/users/create", urlParser, function (req, res, next) {
+router.post("/users/create", urlParser, function (req, res) {
   try {
     pool.getConnection(function (err, connection) {
       var sql = `INSERT INTO users (userName, userMail, userNumber, userPassword) VALUES ("${req.body.userName}","${req.body.userMail}","${req.body.userNumber}","${req.body.userPassword}")`;
       connection.query(sql, function (err, rows) {
         connection.release();
         if (err) throw err;
-        createSendToken(req.body, 201, req, res);
         res.render("messages/success");
       });
     });
@@ -180,7 +195,37 @@ router.post("/", urlParser, function (req, res, next) {
     );
   });
 });
+const calcScore = async (req) => {
+  let data = await getData(req, `SELECT answer FROM sorular`);
+  let userAnswers = req.params.sonuc;
+  let answers = "";
+  data.map((el) => (answers += el.answer));
+  let score = 0;
+  for (let i = 0; i < answers.length - 1; i++) {
+    if (answers[i] == userAnswers[i]) {
+      score++;
+    }
+  }
+  const userScore = (score * 100) / (answers.length * 1);
+  return userScore;
+};
 
+router.get("/sinav-sonuc/:sonuc", async (req, res) => {
+  const user = await getUser(req);
+  let userScore;
+  pool.getConnection(async (err, connection) => {
+    userScore = await calcScore(req);
+    connection.query(
+      `UPDATE users SET score='${userScore}' WHERE userMail='${user.userMail}'`,
+      function (err, rows) {
+        if (err) throw err;
+        res.render("messages/score-message", {
+          userScore,
+        });
+      }
+    );
+  });
+});
 /* simple pages */
 router.get("/sinav/questions", async (req, res, next) => {
   const user = await getUser(req);
@@ -213,7 +258,6 @@ router.get("/post-id/:postid", urlParser, async (req, res) => {
       if (err) throw err;
       let results = Object.values(JSON.parse(JSON.stringify(rows)));
       let post = results.find((el) => req.params.postid == el.id);
-
       res.render("pages/blog-post-details", { data: post, user });
     });
   });
