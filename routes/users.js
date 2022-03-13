@@ -6,10 +6,7 @@ const { parse } = require("querystring");
 const bcrypt = require("bcryptjs");
 const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
-const crypto = require("crypto");
 const catchAsync = require("./../utils/catchAsync");
-const AppError = require("./../utils/appError");
-const Email = require("./../utils/email");
 const app = require("../app");
 //token oluşturma fonksiyonu
 const signToken = (email) => {
@@ -44,9 +41,9 @@ var pool = mysql.createPool({
   connectionLimit: 10, // default = 10
   host: "localhost",
   user: "root",
-  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", //path to mysql sock in MAMP
-  password: "root",
-  database: "hijyen",
+ // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", //path to mysql sock in MAMP
+  password: "1234",
+  database: "hijyen2",
   multipleStatements: true,
   debug: false,
 });
@@ -231,7 +228,11 @@ router.get("/sinav/questions", async (req, res, next) => {
   const user = await getUser(req);
   //kullanıcı giriş yapmıştır.
   if (req.cookies.jwt) {
-    res.render("pages/questions", { user: user });
+
+    const questions=await getData(req, "select soru, optionA, optionB, optionC, optionD from sorular")
+
+    res.render("pages/questions", { user: user,questions:JSON.stringify(questions) });
+
   } else {
     res.render("messages/warning");
   }
@@ -296,3 +297,5 @@ router.route("/").get(async (req, res, next) => {
 });
 
 module.exports = router;
+
+// sınav sorularını çekme

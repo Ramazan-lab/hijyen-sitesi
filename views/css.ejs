@@ -33,6 +33,14 @@
       background: linear-gradient(to right, #d4e4f7, #d4e4f7);
     }
 
+    @media screen and (max-width:400px) {
+      .section-banner a{
+        font-size: 10px !important;
+        font-weight: 700;
+      }
+      
+    }
+
 
     .navbar {
       background: linear-gradient(to right, white, #d4e4f7);
@@ -98,6 +106,10 @@
       padding-bottom: 20px;
       padding-top: 20px;
     }
+
+    .preference-section i:hover{
+      
+    }
     .section-iletisim {
       padding-left: 15vw;
       padding-right: 15vw;
@@ -118,55 +130,6 @@
       font-weight: lighter;
       padding:5px;
     }
-
-
-    /* CSS */
-    .preference-section-button button {
-      appearance: button;
-      background-color: #1899d6;
-      border: solid transparent;
-      border-radius: 16px;
-      border-width: 0 0 4px;
-      box-sizing: border-box;
-      color: #ffffff;
-      cursor: pointer;
-      display: inline-block;
-      font-family: din-round, sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      line-height: 20px;
-      margin: 0;
-      outline: none;
-      overflow: visible;
-      padding: 10px 12px;
-      text-align: center;
-      text-transform: uppercase;
-      touch-action: manipulation;
-      transform: translateZ(0);
-      transition: filter 0.2s;
-      user-select: none;
-      -webkit-user-select: none;
-      vertical-align: middle;
-      white-space: nowrap;
-      width: auto;
-    }
-
-    .preference-section-button button:after {
-      background-clip: padding-box;
-      background-color: #1cb0f6;
-      border: solid transparent;
-      border-radius: 16px;
-      border-width: 0 0 4px;
-      bottom: -4px;
-      content: "";
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-      z-index: -1;
-    }
-
     .button-19:main,
     .button-19:focus {
       user-select: auto;
@@ -377,6 +340,30 @@
       backdrop-filter: blur(4px);
       border-radius: 15px;
     }
+
+   @media screen and (max-width:400px) {
+    .modal-custom {
+      width:300px;
+      padding: 0px;
+    }
+    .modal-custom h4{
+      font-size: 16px;
+    }
+    .modal-custom label{
+      font-size: 13px;
+    }
+
+    .modal-kayit {
+      width:300px;
+      padding: 0px !important;
+    }
+    .modal-kayit h4{
+      font-size: 16px;
+    }
+    .modal-kayit label{
+      font-size: 13px;
+    }
+   }
     .modal-custom *{
       font-weight: 600 !important;
       color:#fff;
@@ -398,6 +385,7 @@
       height:2rem !important;
       font-weight: lighter !important;
       text-indent: 12px !important;
+      width: 100%;
     }
     .modal-custom input:focus{
       border:none !important;
@@ -486,32 +474,34 @@
 
 
     .section-egitimler {
-      background-color: #f4fcfd;
+      background-color: #012327;
     }
     .section-egitimler img {
       width: 100%;
       height: 80%;
-      border:2px solid var(--lacivert);
-      box-shadow: rgba(64, 147, 243, 0.25) 0px 13px 27px -5px, rgba(60, 206, 243, 0.3) 0px 8px 16px -8px;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 
     }
-    .section-egitimler h4 {
-      color: #002249;
-      font-size: 1.4rem;
-      font-weight: 500;
-    }
-    .eğt-col :hover {
-      background-color: #002249;
-      color: white;
+    .section-egitimler .col-md-4 img:hover{
+
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     }
 
-    .eğt-col h4 {
-      background-color: rgb(245, 232, 208);
+    .section-egitimler .col-md-4{
+      background-color: #000;
     }
 
-    .eğt-col {
-      padding-bottom: 55px;
-    }
+  .section-egitimler .row{
+    background-color: var(--blue);
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .section-egitimler h4{
+    color: var(--lacivert);
+    font-weight: 700;
+    font-size: 2rem;
+  }
     .section-we {
       position:relative;
 
@@ -615,6 +605,18 @@
     /* footer */
     .neden-almalisiniz{
       position:relative;
+      padding-top: 10px; 
+      padding-bottom: 10px; 
+      width: 100%;
+      border-color: white;
+      background-color: #002249;
+      color: white;
+    }
+    @media screen and (max-width:400) {
+      .neden-almalisiniz a{
+        font-size: 10px !important;
+      }
+      
     }
     .neden-almalisiniz-background{
 
@@ -639,10 +641,11 @@
       color:#fff;
     }
     .neden-almalisiniz-background-img a {
-      border-radius: 5px;
+      border-radius: 10px;
+      border: solid 2px white;
       display:block;
-      width:300px;
-      height: 64px;
+      width:auto;
+      height: auto;
       text-align: center;
       font-size:1.8rem;
       font-weight: 600;
