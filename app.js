@@ -4,6 +4,7 @@ const rateLimit = require("express-rate-limit");
 const cookieParser = require("cookie-parser");
 const users = require("./routes/users");
 const admin = require("./routes/admin");
+const res = require("express/lib/response");
 
 const router = express.Router();
 const app = express();
@@ -26,6 +27,11 @@ app.use(admin);
 app.use((req, res, next) => {
   req.user = req.cookies;
   next();
+});
+app.all("*", function (req, res) {
+  res.status(200).json({
+    data: "Böyle bir path yok, bir yerden element uydurma!",
+  });
 });
 
 module.exports = app;

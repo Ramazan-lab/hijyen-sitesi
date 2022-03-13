@@ -1,0 +1,29 @@
+<%- include("../head")%>
+<body style="background-image: url(/images/pexels-ovan-57690.jpg)">
+  <%- include("admin-sidebar")%>
+  <h4 class="text-center text-white bg-dark p-3">Blog Postlarınız</h4>
+<div  class="container bg-dark p-5">
+    <div class="row ">
+        <% for(var i=0; i < posts.length; i++) { %>
+        <div class="col-12 bg-secondary text-white p-5 mt-2">
+           <h5 class="bg-dark p-2 text-center"><%- posts[i].title %></h5>
+           <div class="bg-dark p-4" ><%- posts[i].shortDesc %></div>
+           <div class="bg-dark p-4 text-muted"><small><%- posts[i].longDesc %></small></div>
+           <div><a class="w-100 btn btn-danger mt-2" href="/admin/blog-posts/<%- posts[i].id %>">Sil</a></div>
+        </div>
+        <% } %>
+    </div>
+</div>
+
+<script>
+  function openNav() {
+    document.getElementById("mySideBar").style.width = "250px";
+  }
+
+  /* Set the width of the side navigation to 0 */
+  function closeNav() {
+    document.getElementById("mySideBar").style.width = "0";
+  }
+</script>
+</body>
+</html>
