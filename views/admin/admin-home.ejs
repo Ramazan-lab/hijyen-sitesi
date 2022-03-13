@@ -1,0 +1,55 @@
+<div  class="container">
+        <h1
+          style="
+            text-decoration: underline;
+            text-align: center;
+            font-style: italic;
+            color: white;
+          "
+        >
+          Yönetim Merkezi
+        </h1>
+  <div class="container adpnl">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="admincard">
+          <i class="bi bi-person-circle"></i>
+          <div class="container">
+            <h4><b>Siteye giriş yapan kullanıcılar</b></h4>
+            <p><%- data.userCount %></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="admincard">
+          <i class="bi bi-journal-check"></i>
+          <div class="container">
+            <h4><b>Sertifika Alanlar</b></h4>
+            <p>
+                <%- data.sertifikaAlanlar %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="admincard">
+          <i class="bi bi-globe2"></i>
+          <div class="container">
+            <h4><b>Online başvurular</b></h4>
+            <%- data.onlineBasvurular %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="admincard">
+          <i class="bi bi-envelope-fill"></i>
+          <div class="container">
+            <h4><b>İstek bekleyenler</b></h4>
+            <%- data.istekBekleyenler %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

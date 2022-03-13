@@ -1,0 +1,42 @@
+<%- include("../head")%>
+<body style="background-image: url(/images/pexels-ovan-57690.jpg)">
+  <%- include("admin-sidebar")%>
+<div  class="container bg-dark ">
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table text-white">
+                <caption>Online Başvurular</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                  </tr>
+                </thead>
+                <%- users %>
+                <tbody>
+                  <% for(var i=0; i < users.length; i++) { %>
+                    <tr>
+                      <th scope="row"><%= users[i].id %></th>
+                      <td><%= users[i].name %></td>
+                      <td><%= users[i].email %></td>
+                    </tr>
+                 <% } %>
+                </tbody>
+            </table>
+          </div>
+    </div>
+</div>
+
+<script>
+  function openNav() {
+    document.getElementById("mySideBar").style.width = "250px";
+  }
+
+  /* Set the width of the side navigation to 0 */
+  function closeNav() {
+    document.getElementById("mySideBar").style.width = "0";
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<%- include("../head")%>
+<body style="background-image: url(/images/pexels-ovan-57690.jpg)">
+  <%- include("admin-sidebar")%>
+  <h4 class="text-center text-white bg-dark p-3">Post Oluştur</h4>
+<div  class="container bg-dark p-5">
+    <div class="row ">
+        <form class="text-white" method="post" action="/admin/create-post">
+            <div class="form-row ">
+              <div class="form-group w-100">
+                <label for="title">Post Başlığı</label>
+                <input type="title" name="title" class="form-control w-100" id="title">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="shortDesc">Kısa Açıklama</label>
+              <input type="text" class="form-control" id="shortDesc" name="shortDesc">
+            </div>
+       
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="longDesc">Uzun açıklama</label>
+                    <textarea class="form-control" id="longDesc" name="longDesc" rows="3"></textarea>
+                  </div>
+            </div>
+            <div class="form-group mb-3 pt-2  d-flex justify-content-center">
+                <h4 class="bg-primary p-1">Post Görseli:</h4>
+                  <div class="file-container p-1"> 
+                    <input type="file" class="custom-file-input d-block" id="inputGroupFile01">
+                  </div>
+              </div>
+            <button type="submit" class="btn btn-primary w-100 mt-3">Kaydet</button>
+          </form>
+    </div>
+</div>
+
+<script>
+  function openNav() {
+    document.getElementById("mySideBar").style.width = "250px";
+  }
+
+  /* Set the width of the side navigation to 0 */
+  function closeNav() {
+    document.getElementById("mySideBar").style.width = "0";
+  }
+</script>
+</body>
+</html>
