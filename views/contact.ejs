@@ -22,11 +22,21 @@
           class="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
+          required
         />
       </div>
       <div class="form-group">
         <label for="phone">Telefon</label>
-        <input type="text" name="phone" class="form-control" id="phone" />
+        <input
+          type="text"
+          name="telefon"
+          class="form-control"
+          id="phone"
+          oninput="numberOnly(this.id);"
+          minlength="9"
+          maxlength="15"
+          required
+        />
       </div>
 
       <div

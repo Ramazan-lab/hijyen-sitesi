@@ -14,23 +14,31 @@
    </div>
    <div class="form-group">
      <label for="phone">Tel no *</label>
-     <input type="text" class="form-control" id="phone" name="phone" required>
+     <input  type="text"
+     name="phone"
+     class="form-control"
+     id="phone"
+     oninput="numberOnly(this.id);"
+     minlength="9"
+     maxlength="15"
+     required>
    </div>
    <div class="form-group">
      <label for="email">E posta *</label>
-     <input type="text" class="form-control" id="email" name="email" required>
+     <input type="email" class="form-control" id="email" name="email"  minlength="5"
+     maxlength="50" required>
    </div>
    <div class="form-group">
      <label for="ticariunvan">Ticaret Ünvanı *</label>
-     <input type="text" class="form-control" id="ticariunvan" name="ticariunvan" required>
+     <input type="text" class="form-control" id="ticariunvan" name="ticariunvan" maxlength="200" required>
    </div>
    <div class="form-group">
      <label for="adress">Adres *</label>
-     <input type="text" class="form-control" id="adress" name="adress" required>
+     <input type="text" class="form-control" id="adress" name="adress" maxlength="500" required>
    </div>
    <div class="form-group">
      <label for="website">Website (Zorunlu Değil)</label>
-     <input type="text" class="form-control" id="website" name="website" required>
+     <input type="text" class="form-control" id="website" name="website" maxlength="120" required>
    </div>
    <button type="submit" class="btn btn-primary w-100">Gönder</button>
  </form>
