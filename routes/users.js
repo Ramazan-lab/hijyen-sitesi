@@ -2,12 +2,10 @@ var express = require("express");
 var mysql = require("mysql");
 const uniqid = require("uniqid");
 const bodyParser = require("body-parser");
-const { parse } = require("querystring");
 const bcrypt = require("bcryptjs");
-const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
-const catchAsync = require("./../utils/catchAsync");
-const app = require("../app");
+const { getData, logout } = require("./db");
+
 //token oluşturma fonksiyonu
 const signToken = (email) => {
   return jwt.sign({ email }, "ABCDEFG123456", {
@@ -41,9 +39,9 @@ var pool = mysql.createPool({
   connectionLimit: 10, // default = 10
   host: "localhost",
   user: "root",
- // socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", //path to mysql sock in MAMP
-  password: "1234",
-  database: "hijyen2",
+  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", //path to mysql sock in MAMP
+  password: "root",
+  database: "hijyen",
   multipleStatements: true,
   debug: false,
 });
@@ -67,20 +65,7 @@ const getUser = async (req) => {
     });
   }
 };
-const getData = async (req, query) => {
-  if (req.cookies.jwt) {
-    return new Promise((resolve) => {
-      pool.getConnection(function (err, connection) {
-        connection.query(query, function (err, rows) {
-          connection.release();
-          if (err) throw err;
-          let data = Object.values(JSON.parse(JSON.stringify(rows)));
-          resolve(data);
-        });
-      });
-    });
-  }
-};
+
 //middlewares
 //sign up - kayıt olma
 router.use("/users/create", urlParser, async function (req, res, next) {
@@ -117,7 +102,7 @@ router.post("/users/login", urlParser, function (req, res, next) {
   const { email, password } = req.body;
   //if email-password exist
   if (!email || !password) {
-    return res.status(404).json({ message: "Email veya password yok!" });
+    return res.render("messages/wrong-pass");
   }
 
   pool.getConnection(function (err, connection) {
@@ -128,17 +113,11 @@ router.post("/users/login", urlParser, function (req, res, next) {
           connection.release();
           if (err) throw err;
           if (!rows[0]) {
-            return res.status(401).json({
-              message: "UYARI!",
-              status: "Emaile ait hesap bulunamadı",
-            });
+            return res.render("messages/wrong-pass");
           }
           let results = Object.values(JSON.parse(JSON.stringify(rows)));
           if (!(await correctPassword(password, results[0]?.userPassword))) {
-            return res.status(401).json({
-              message: "UYARI!",
-              status: "Şifre yanlış, tekrar deneyin",
-            });
+            return res.render("messages/wrong-pass");
           }
 
           //if everthing is ok, send token to client
@@ -193,7 +172,7 @@ router.post("/", urlParser, function (req, res, next) {
   });
 });
 const calcScore = async (req) => {
-  let data = await getData(req, `SELECT answer FROM sorular`);
+  let data = await getData(req, `SELECT answer FROM sorular`, pool);
   let userAnswers = req.params.sonuc;
   let answers = "";
   data.map((el) => (answers += el.answer));
@@ -228,11 +207,16 @@ router.get("/sinav/questions", async (req, res, next) => {
   const user = await getUser(req);
   //kullanıcı giriş yapmıştır.
   if (req.cookies.jwt) {
+    const questions = await getData(
+      req,
+      "select soru, optionA, optionB, optionC, optionD from sorular",
+      pool
+    );
 
-    const questions=await getData(req, "select soru, optionA, optionB, optionC, optionD from sorular")
-
-    res.render("pages/questions", { user: user,questions:JSON.stringify(questions) });
-
+    res.render("pages/questions", {
+      user: user,
+      questions: JSON.stringify(questions),
+    });
   } else {
     res.render("messages/warning");
   }
@@ -283,13 +267,7 @@ router.get("/sss", async (req, res, next) => {
   const user = await getUser(req);
   res.render("pages/sss", { user: user });
 });
-router.get("/logout", function (req, res, next) {
-  res.cookie("jwt", "loggedout", {
-    expires: new Date(Date.now()),
-    httpOnly: true,
-  });
-  res.redirect("/");
-});
+router.get("/logout", logout);
 
 router.route("/").get(async (req, res, next) => {
   const user = await getUser(req);

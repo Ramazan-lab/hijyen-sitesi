@@ -6,7 +6,7 @@ const { pool, getUser } = require("./db");
 const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
 const bodyParser = require("body-parser");
-const { getData, getCount } = require("./db");
+const { getData, getCount, logout } = require("./db");
 const urlParser = bodyParser.urlencoded({ extended: false });
 //token oluşturma fonksiyonu
 const signToken = (email) => {
@@ -179,4 +179,5 @@ router.post("/admin/create-post", urlParser, async (req, res, next) => {
   res.render("admin/admin-blog-edit-post");
 });
 
+router.get("/admin/logout", logout);
 module.exports = router;

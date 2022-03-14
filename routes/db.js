@@ -60,3 +60,11 @@ exports.getUser = async (req, pool) => {
     });
   }
 };
+
+exports.logout = (req, res, next) => {
+  res.cookie("jwt", "loggedout", {
+    expires: new Date(Date.now()),
+    httpOnly: true,
+  });
+  res.redirect("/");
+};

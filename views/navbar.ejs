@@ -101,18 +101,14 @@
   </h4>
   <form action="/users/create" method="POST" class="modal__form">
     <label style="color: white; font-weight: 400">Ad Soyad</label>
-    <input name="userName" type="text" required />
+    <input name="userName" type="text" minlength="4" maxlength="30" required />
     <label style="color: white; font-weight: 400">E-Posta</label>
-    <input name="userMail" type="email" required />
+    <input name="userMail" type="email" minlength="6"  max="40" required />
     <label style="color: white; font-weight: 400">Telefon numarası</label>
-    <input
-      name="userNumber"
-      type="number"
-      placeholder="(5xx) xxx xx xx"
-      required
-    />
+    <input type="text" placeholder="(5xx) xxx xx xx" oninput="numberOnly(this.id);" minlength="9" maxlength="15" id="flight_number" name="userNumber"/>
+
     <label style="color: white; font-weight: 400">Şifre</label>
-    <input name="userPassword" type="password" required />
+    <input name="userPassword"     type="password" required   minlength="5" maxlength="15" />
     <button type="submit" class="btn-modal px-5 py-2">
       Kayıt ol <i class="bi bi-arrow-bar-right"></i>
     </button>

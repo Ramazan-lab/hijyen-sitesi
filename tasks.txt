@@ -1,18 +1,3 @@
----TASARIM---
-[] -> Admin dashboard -> Post ekleme paneli
-[] -> Admin dashboard -> Post listeleme paneli
-[] -> Admin dashboard -> User "*Biz sizi arayalım" istekleri paneli
-[] -> Admin dashboard -> Users hesapları paneli
-[] -> Admin dashboard -> Users sınav sonuçları paneli
-[] -> Responsive -> Websiteye 2 font belirlenecek (Google fonts)
-[] -> Responsive -> Websitenin responsive tasarımı gözden geçirilecek (bazı kayma, taşma ve aşırı büyümeler var)
-[] -> Back-end -> Veritabanları tasarımı yapılacak
-[] -> Back-end -> User Sign up işlemi yapılacak
-[] -> Back-end -> Admin Sign up işlemi yapılacak
-[] -> Back-end -> User Login işlemi yapılacak
-[] -> Back-end -> User Sınav sistemi yapılacak
-[] -> Back-end -> User Log out işlemi yapılacak
-[] -> Back-end -> Admin User listesine erişim
-[] -> Back-end -> Admin User isteklerine erişim
-
-
+[] -> Button düzenlenecek
+[] -> Error messajları mantıklı hale getirilecek
+[] -> 
