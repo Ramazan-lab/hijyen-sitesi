@@ -1,17 +1,28 @@
 var mysql = require("mysql");
 const jwt = require("jsonwebtoken");
 
+/* 
+1-> package json'dan nodemonu node'a cevir!
+*/
 exports.pool = mysql.createPool({
   connectionLimit: 10, // default = 10
+  host: "34.134.249.238",
+  user: "root",
+  password: "hijyenakademi",
+  database: "hijyen-akademi",
+  multipleStatements: true,
+  debug: false,
+});
+/* exports.pool = mysql.createPool({
+  connectionLimit: 10, // default = 10
+  socketPath:"/Applications/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
   user: "root",
-  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", //path to mysql sock in MAMP
   password: "root",
   database: "hijyen",
   multipleStatements: true,
   debug: false,
-});
-
+}); */
 exports.getData = async (req, query, pool) => {
   if (req.cookies.jwt) {
     return new Promise((resolve) => {

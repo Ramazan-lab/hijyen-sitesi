@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { getData, logout } = require("./db");
+const { pool } = require("./db");
 
 //token oluşturma fonksiyonu
 const signToken = (email) => {
@@ -35,16 +36,25 @@ var router = express.Router();
 
 //db connection & data parsing
 const urlParser = bodyParser.urlencoded({ extended: false });
-var pool = mysql.createPool({
+/* const pool = mysql.createPool({
   connectionLimit: 10, // default = 10
+  socketPath:"/MAMP/tmp/mysql/mysql.sock",
   host: "localhost",
   user: "root",
-  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock", //path to mysql sock in MAMP
   password: "root",
   database: "hijyen",
   multipleStatements: true,
   debug: false,
-});
+}); */
+/* const pool = mysql.createPool({
+  connectionLimit: 10, // default = 10
+  host: "34.134.249.238",
+  user: "root",
+  password: "hijyenakademi",
+  database: "hijyen-akademi",
+  multipleStatements: true,
+  debug: false,
+}); */
 
 const getUser = async (req) => {
   if (req.cookies.jwt) {
@@ -69,12 +79,10 @@ const getUser = async (req) => {
 //middlewares
 //sign up - kayıt olma
 router.use("/users/create", urlParser, async function (req, res, next) {
-  console.log(req.body);
   try {
     req.body.userPassword = await bcrypt.hash(req.body.userPassword, 12);
     next();
   } catch (err) {
-    console.log(err);
     next();
   }
 });
@@ -85,11 +93,10 @@ router.post("/users/create", urlParser, function (req, res) {
       connection.query(sql, function (err, rows) {
         connection.release();
         if (err) throw err;
-        res.render("messages/success");
+        res.redirect("/");
       });
     });
   } catch (err) {
-    console.log(err.stack);
     res.status(404).json({
       status: "fail",
       message: err,
@@ -102,7 +109,7 @@ router.post("/users/login", urlParser, function (req, res, next) {
   const { email, password } = req.body;
   //if email-password exist
   if (!email || !password) {
-    return res.render("messages/wrong-pass");
+    return res.status(401).json({ status:'fail',message:'sifre ve email alanı doldurulmalıdır'});
   }
 
   pool.getConnection(function (err, connection) {
@@ -113,11 +120,11 @@ router.post("/users/login", urlParser, function (req, res, next) {
           connection.release();
           if (err) throw err;
           if (!rows[0]) {
-            return res.render("messages/wrong-pass");
+            return res.status(401).json({ status:'fail',message:'hatalı email'});
           }
           let results = Object.values(JSON.parse(JSON.stringify(rows)));
           if (!(await correctPassword(password, results[0]?.userPassword))) {
-            return res.render("messages/wrong-pass");
+            return res.status(401).json({ status:'fail',message:'hatalı sifre'});
           }
 
           //if everthing is ok, send token to client
@@ -128,13 +135,18 @@ router.post("/users/login", urlParser, function (req, res, next) {
             phone: results[0].userNumber,
             sertifika: results[0].sertifika,
           };
-
           res.locals.user = currentUser;
           createSendToken(req.body, 200, req, res);
-          res.redirect("/");
+        
+          res.status(200).json(
+            {
+              status:'success',
+              message:"Başarıyla Giriş Yapıldı"
+            }
+          );
         } catch (err) {
-          res.status(200).json({
-            status: "success",
+          res.status(401).json({
+            status: "fail",
             message: err,
           });
         }
@@ -203,23 +215,26 @@ router.get("/sinav-sonuc/:sonuc", async (req, res) => {
   });
 });
 /* simple pages */
-router.get("/sinav/questions", async (req, res, next) => {
+router.get('/exam/start/',async (req,res,next)=>{
   const user = await getUser(req);
-  //kullanıcı giriş yapmıştır.
-  if (req.cookies.jwt) {
-    const questions = await getData(
-      req,
-      "select soru, optionA, optionB, optionC, optionD from sorular",
-      pool
-    );
+  const questions = await getData(
+    req,
+    "select soru, optionA, optionB, optionC, optionD from sorular",
+    pool
+  );
 
-    res.render("pages/questions", {
-      user: user,
-      questions: JSON.stringify(questions),
-    });
-  } else {
-    res.render("messages/warning");
+  res.render("pages/questions", {
+    user: user,
+    questions: JSON.stringify(questions),
+  });
+})
+router.get("/exam/questions", async (req, res, next) => {
+  //kullanıcı giriş yapmıştır.
+  if (!req.cookies.jwt) {
+    res.status(400).json({ status:'fail',message:'No permission to enter exam'});
   }
+  res.status(200).json({ status:'success',});
+
 });
 router.get("/hijyen-belgesi", async (req, res, next) => {
   const user = await getUser(req);

@@ -4,43 +4,38 @@
       <div
         class="row d-flex flex-column justify-content-center align-content-center p-5"
       >
-        <form method="post" action="admin" class="w-50 form-admin-login p-5" style="margin-top: 7vw">
+        <form id="form-admin-login"  method="POST"  class="w-50 form-admin-login p-5" style="margin-top: 7vw">
           <h1>Admin Log In</h1>
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label"
+            <label for="adEmail" class="form-label"
               >Email adres</label
             >
             <input
               type="email"
               name="email"
+              id="adEmail"
               class="form-control customized-form"
-              id="exampleInputEmail1"
               aria-describedby="emailHelp"
             />
 
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Şifre</label>
+            <label for="adPass" class="form-label">Şifre</label>
             <input
               type="password"
+              id="adPass"
               class="form-control customized-form"
-              id="exampleInputPassword1"
               name="password"
             />
-          </div>
-          <div class="mb-3 form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              id="exampleCheck1"
-            />
-            <label class="form-check-label" for="exampleCheck1"
-              >Beni hatırla</label
-            >
           </div>
           <button type="submit" class="btn btn-primary w-100">Giriş Yap</button>
         </form>
       </div>
     </div>
-  </body>
+  
+  
+  
+  <%- include('../scripts') %>
+
+</body>
 </html>

@@ -79,18 +79,19 @@ router.post("/admin", urlParser, async (req, res) => {
           if (err) throw err;
           if (!rows[0]) {
             return res.status(401).json({
-              message: "UYARI!",
-              status: "Emaile ait hesap bulunamadı",
+              message: "Bu email ait hesap bulunamadı.",
+              status: "failed",
             });
           }
           let results = Object.values(JSON.parse(JSON.stringify(rows)));
-          if (!results[0].password == password) {
+          console.log(results[0].password,password);
+          let isCorrect=results[0].password== password;
+          if (!isCorrect) {
             return res.status(401).json({
               message: "UYARI!",
               status: "Şifre yanlış, tekrar deneyin",
             });
           }
-
           //if everthing is ok, send token to client
           const currentUser = {
             email,

@@ -3,45 +3,7 @@
   integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
   crossorigin="anonymous"
 ></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
-<script>
-  const modal = document.querySelector(".modal-custom");
-  const modalKayit = document.querySelector(".modal-kayit");
-  const overlay = document.querySelector(".overlay");
-  const btnCloseModal = document.querySelector(".btn--close-modal");
-  const btnCloseModalKayit = document.querySelector(".btn--close-modal-kayit");
-  const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
-  const btnsOpenModalKayit = document.querySelectorAll(
-    ".btn--show-modal-kayit"
-  );
+<script  src="/js/bundle.js"></script>
 
-  const openModal = function (e) {
-    e.preventDefault();
-    modal.classList.remove("hidden");
-    overlay.classList.remove("hidden");
-  };
-  const openModalKayit = function (e) {
-    e.preventDefault();
-    modalKayit.classList.remove("hidden");
-    overlay.classList.remove("hidden");
-  };
-
-  const closeModal = function () {
-    modal.classList.add("hidden");
-    overlay.classList.add("hidden");
-  };
-
-  const closeModalKayit = function () {
-    modalKayit.classList.add("hidden");
-    overlay.classList.add("hidden");
-  };
-
-  btnsOpenModal.forEach((btn) => btn.addEventListener("click", openModal));
-  btnsOpenModalKayit.forEach((btn) =>
-    btn.addEventListener("click", openModalKayit)
-  );
-
-  btnCloseModal.addEventListener("click", closeModal);
-  btnCloseModalKayit.addEventListener("click", closeModalKayit);
-  overlay.addEventListener("click", closeModal);
-</script>

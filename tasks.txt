@@ -1,3 +1,4 @@
-[] -> Button düzenlenecek
-[] -> Error messajları mantıklı hale getirilecek
-[] -> 
+[COMPLETED] -> Admin Şifre Kontrolü Güncellenecek
+[COMPLETED] -> Login & Signup AJAX 
+[] -> Bütün errors handle edilecek
+[] -> Test Yap ve açıkları fixle

@@ -79,12 +79,12 @@
     Akademiye Giriş Yap
   </h4>
   
-    <form action="/users/login" method="POST" class="modal__form">
+    <form  method="POST" class="modal__form" id="loginForm" >
     <label for="email">E-Posta</label>
-    <input type="email" name="email" id="email" maxlength="20" />
-    <label>Şifre</label>
-    <input type="password" name="password" maxlength="8" />
-    <button class="btn-modal px-5 py-2">
+    <input type="email" name="email" id="email" maxlength="80" />
+    <label for="password">Şifre</label>
+    <input type="password" id="password" name="password" maxlength="20" />
+    <button class="btn-modal px-5 py-2" type="submit">
       Giriş yap <i class="bi bi-arrow-bar-right"></i>
     </button>
   </form>
@@ -99,16 +99,16 @@
   >
     Akademiye Kayıt Ol
   </h4>
-  <form action="/users/create" method="POST" class="modal__form">
+  <form id="signupForm"  method="POST" class="modal__form">
     <label style="color: white; font-weight: 400">Ad Soyad</label>
-    <input name="userName" type="text" minlength="4" maxlength="30" required />
+    <input id="userName" name="userName" type="text" minlength="4" maxlength="30" required />
     <label style="color: white; font-weight: 400">E-Posta</label>
-    <input name="userMail" type="email" minlength="6"  max="40" required />
+    <input id="userMail" type="email" minlength="6"  max="40" required />
     <label style="color: white; font-weight: 400">Telefon numarası</label>
-    <input type="text" placeholder="(5xx) xxx xx xx" oninput="numberOnly(this.id);" minlength="9" maxlength="15" id="flight_number" name="userNumber"/>
+    <input type="text" placeholder="(5xx) xxx xx xx" minlength="9" maxlength="15" id="userNumber" name="userNumber"/>
 
     <label style="color: white; font-weight: 400">Şifre</label>
-    <input name="userPassword"     type="password" required   minlength="5" maxlength="15" />
+    <input name="userPassword" id="userPassword" type="password" required   minlength="5" maxlength="15" />
     <button type="submit" class="btn-modal px-5 py-2">
       Kayıt ol <i class="bi bi-arrow-bar-right"></i>
     </button>
@@ -117,4 +117,44 @@
 
 </div>
 <div class="overlay hidden"></div>
+<script>
+  const modal = document.querySelector(".modal-custom");
+  const modalKayit = document.querySelector(".modal-kayit");
+  const overlay = document.querySelector(".overlay");
+  const btnCloseModal = document.querySelector(".btn--close-modal");
+  const btnCloseModalKayit = document.querySelector(".btn--close-modal-kayit");
+  const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
+  const btnsOpenModalKayit = document.querySelectorAll(
+    ".btn--show-modal-kayit"
+  );
 
+  const openModal = function (e) {
+    e.preventDefault();
+    modal.classList.remove("hidden");
+    overlay.classList.remove("hidden");
+  };
+  const openModalKayit = function (e) {
+    e.preventDefault();
+    modalKayit.classList.remove("hidden");
+    overlay.classList.remove("hidden");
+  };
+
+  const closeModal = function () {
+    modal.classList.add("hidden");
+    overlay.classList.add("hidden");
+  };
+
+  const closeModalKayit = function () {
+    modalKayit.classList.add("hidden");
+    overlay.classList.add("hidden");
+  };
+
+  btnsOpenModal.forEach((btn) => btn.addEventListener("click", openModal));
+  btnsOpenModalKayit.forEach((btn) =>
+    btn.addEventListener("click", openModalKayit)
+  );
+
+  btnCloseModal.addEventListener("click", closeModal);
+  btnCloseModalKayit.addEventListener("click", closeModalKayit);
+  overlay.addEventListener("click", closeModal);
+</script>
